@@ -1,0 +1,176 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f4f0e8;
+    color: #25231f;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+header {
+    border-bottom: 1px solid #c9c1b4;
+    padding: 20px 6%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    color: #25231f;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #4d4942;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 6%;
+}
+
+.hero {
+    max-width: 800px;
+    margin-bottom: 80px;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #756b5e;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    font-weight: normal;
+    margin-bottom: 35px;
+}
+
+.intro {
+    font-size: 1.25rem;
+    max-width: 600px;
+    color: #5d574e;
+}
+
+
+/* =========================
+   SECTION CARDS
+========================= */
+
+.sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    display: block;
+    padding: 35px;
+    border: 1px solid #c9c1b4;
+    color: #25231f;
+    text-decoration: none;
+    background: #eee9df;
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    background: #e8e1d5;
+}
+
+.number {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #817567;
+}
+
+.card h2 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 15px 0;
+}
+
+.card p {
+    color: #625c53;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid #c9c1b4;
+    padding: 25px 6%;
+    text-align: center;
+    color: #756e64;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    main {
+        padding-top: 50px;
+    }
+
+    .sections {
+        grid-template-columns: 1fr;
+    }
+
+}
