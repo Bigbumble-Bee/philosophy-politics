@@ -1459,13 +1459,82 @@
         saveNotes(notes);
 
         clearForm();
+/* =========================================
+   RECEIVE NOTES FROM OTHER PAGES
+   ========================================= */
 
-        displayNotes();
+function loadNoteFromURL() {
 
-        updateStats();
+    const params = new URLSearchParams(
+        window.location.search
+    );
 
-        updateCategoryCounts();
+    const title = params.get("title");
+    const category = params.get("category");
+    const source = params.get("source");
+    const summary = params.get("summary");
+    const content = params.get("content");
 
+    if (title) {
+
+        document.getElementById("noteTitle").value =
+            title;
+
+    }
+
+    if (category) {
+
+        const categorySelect =
+            document.getElementById("noteCategory");
+
+        const validCategory =
+            Array.from(categorySelect.options)
+                .some(option => option.value === category);
+
+        if (validCategory) {
+            categorySelect.value = category;
+        }
+
+    }
+
+    if (source) {
+
+        document.getElementById("noteSource").value =
+            source;
+
+    }
+
+    if (summary) {
+
+        document.getElementById("noteSummary").value =
+            summary;
+
+    }
+
+    if (content) {
+
+        document.getElementById("noteContent").value =
+            content;
+
+    }
+
+    if (title || content) {
+
+        document
+            .getElementById("create")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+}loadNoteFromURL();
+
+displayNotes();
+
+updateStats();
+
+updateCategoryCounts();
 
         document
             .getElementById("archive")
