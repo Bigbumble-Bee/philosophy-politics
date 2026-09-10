@@ -6,529 +6,455 @@
 
     <title>Notes — The Commonplace</title>
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
+        /* =========================================
+           THE COMMONPLACE — NOTES
+           ========================================= */
 
-        :root {
-            --paper: #f3efe6;
-            --paper-light: #faf8f3;
-            --paper-dark: #e8e1d4;
-
-            --ink: #292721;
-            --muted: #716a5e;
-            --border: #c9c0b1;
-
-            --brown: #75604d;
-            --brown-light: #ebe4dc;
-
-            --burgundy: #70494a;
-            --olive: #62664e;
-            --navy: #4c5961;
+        .notes-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* HERO */
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--paper);
-            color: var(--ink);
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.7;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        header {
+        .notes-hero {
+            padding: 50px 0 45px;
             border-bottom: 1px solid var(--border);
-            background: rgba(243,239,230,.96);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(8px);
+            margin-bottom: 45px;
         }
 
-        .nav {
-            max-width: 1180px;
-            margin: auto;
-            padding: 18px 28px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-
+        .notes-eyebrow {
             font-family: Arial, sans-serif;
-            font-size: .78rem;
-            text-transform: uppercase;
-            letter-spacing: .1em;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            color: var(--burgundy);
+            margin-bottom: 18px;
         }
 
-        .nav-links a {
-            color: var(--muted);
-        }
-
-        .nav-links a:hover {
-            color: var(--brown);
-        }
-
-        main {
-            max-width: 1180px;
-            margin: auto;
-            padding: 70px 28px 100px;
-        }
-
-        section {
-            scroll-margin-top: 100px;
-            margin-bottom: 100px;
-        }
-
-        .hero {
-            max-width: 800px;
-            margin-bottom: 80px;
-        }
-
-        .eyebrow {
-            font-family: Arial, sans-serif;
-            font-size: .72rem;
-            text-transform: uppercase;
-            letter-spacing: .18em;
-            color: var(--brown);
-            margin-bottom: 14px;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            line-height: .95;
+        .notes-hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: normal;
-            letter-spacing: -.045em;
-            margin-bottom: 28px;
+            line-height: 0.95;
+            margin: 0 0 24px;
         }
 
-        .hero p {
+        .notes-hero p {
             max-width: 700px;
-            font-size: 1.2rem;
             color: var(--muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
-        .section-heading {
-            border-top: 1px solid var(--border);
-            padding-top: 24px;
-            margin-bottom: 38px;
-
+        .notes-stat-row {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 35px;
+            margin-top: 30px;
         }
 
-        .section-heading h2 {
-            font-size: 2.4rem;
-            font-weight: normal;
+        .notes-stat {
+            display: flex;
+            flex-direction: column;
         }
 
-        .section-number {
+        .notes-stat-number {
+            font-size: 1.8rem;
+        }
+
+        .notes-stat-label {
             font-family: Arial, sans-serif;
-            font-size: .72rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
             color: var(--muted);
-            letter-spacing: .1em;
+            margin-top: 3px;
         }
 
-        .intro {
-            max-width: 720px;
-            color: var(--muted);
-            margin-bottom: 35px;
+        /* SECTION */
+
+        .notes-section {
+            margin: 65px 0;
         }
 
-        /* START */
-
-        .start-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 14px;
+        .notes-section-heading {
+            margin-bottom: 25px;
         }
 
-        .start-card {
-            padding: 26px;
-            min-height: 180px;
-
-            background: var(--paper-light);
-            border: 1px solid var(--border);
-            border-top: 4px solid var(--brown);
-
-            transition: .2s ease;
-        }
-
-        .start-card:nth-child(2) {
-            border-top-color: var(--burgundy);
-        }
-
-        .start-card:nth-child(3) {
-            border-top-color: var(--navy);
-        }
-
-        .start-card:nth-child(4) {
-            border-top-color: var(--olive);
-        }
-
-        .start-card:nth-child(5) {
-            border-top-color: var(--brown);
-        }
-
-        .start-card:nth-child(6) {
-            border-top-color: var(--burgundy);
-        }
-
-        .start-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(55,48,39,.08);
-        }
-
-        .number {
+        .notes-section-number {
+            display: block;
             font-family: Arial, sans-serif;
-            font-size: .7rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
             color: var(--muted);
-        }
-
-        .start-card h3 {
-            font-size: 1.35rem;
-            font-weight: normal;
-            margin: 20px 0 8px;
-        }
-
-        .start-card p {
-            color: var(--muted);
-            font-size: .9rem;
-        }
-
-        /* NOTE TYPES */
-
-        .type-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 14px;
-        }
-
-        .type {
-            padding: 25px;
-            min-height: 220px;
-
-            background: var(--paper-light);
-            border: 1px solid var(--border);
-        }
-
-        .type h3 {
-            font-size: 1.4rem;
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
-
-        .type p {
-            color: var(--muted);
-            font-size: .88rem;
-        }
-
-        .type-label {
-            font-family: Arial, sans-serif;
-            font-size: .65rem;
-            color: var(--brown);
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            margin-bottom: 16px;
-        }
-
-        /* NOTEBOOK */
-
-        .notebook {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .note {
-            background: var(--paper-light);
-            border: 1px solid var(--border);
-            padding: 28px;
-        }
-
-        .note h3 {
-            font-size: 1.5rem;
-            font-weight: normal;
             margin-bottom: 8px;
         }
 
-        .note p {
-            color: var(--muted);
-            font-size: .88rem;
-            margin-bottom: 20px;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 280px;
-
-            padding: 16px;
-
-            background: var(--paper);
-            border: 1px solid var(--border);
-
-            color: var(--ink);
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.7;
-
-            resize: vertical;
-            outline: none;
-        }
-
-        textarea:focus {
-            border-color: var(--brown);
-        }
-
-        button {
-            padding: 10px 15px;
-            margin-top: 10px;
-
-            background: var(--paper);
-            border: 1px solid var(--border);
-
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: var(--paper-dark);
-            border-color: var(--brown);
-        }
-
-        .saved {
-            font-family: Arial, sans-serif;
-            font-size: .65rem;
-            color: var(--olive);
-            margin-left: 10px;
-        }
-
-        /* CORNELL */
-
-        .cornell {
-            border: 1px solid var(--border);
-            background: var(--paper-light);
-        }
-
-        .cornell-header {
-            padding: 25px;
-            background: var(--brown-light);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .cornell-header h3 {
-            font-size: 1.7rem;
+        .notes-section-heading h2 {
+            margin: 0 0 10px;
+            font-size: 2.2rem;
             font-weight: normal;
         }
 
-        .cornell-header p {
+        .notes-section-heading p {
+            max-width: 700px;
             color: var(--muted);
-            font-size: .88rem;
+            line-height: 1.7;
         }
 
-        .cornell-body {
+        /* QUICK LINKS */
+
+        .notes-category-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
         }
 
-        .cue,
-        .notes {
-            padding: 25px;
-            min-height: 280px;
+        .notes-category {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.2s ease;
         }
 
-        .cue {
-            border-right: 1px solid var(--border);
-            background: var(--paper-dark);
+        .notes-category:hover {
+            transform: translateY(-2px);
+            border-color: var(--burgundy);
         }
 
-        .cue h4,
-        .notes h4 {
+        .notes-category-name {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .notes-category-count {
+            color: var(--muted);
             font-family: Arial, sans-serif;
-            font-size: .65rem;
-            text-transform: uppercase;
-            letter-spacing: .1em;
-            margin-bottom: 12px;
+            font-size: 0.68rem;
+        }
+
+        /* NOTE FORM */
+
+        .note-form {
+            border: 1px solid var(--border);
+            padding: 30px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-field {
+            margin-bottom: 18px;
+        }
+
+        .form-field.full {
+            width: 100%;
+        }
+
+        .form-field label {
+            display: block;
+            font-family: Arial, sans-serif;
+            font-size: 0.67rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 7px;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.45);
+            color: var(--ink);
+            padding: 12px;
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+        }
+
+        .form-field textarea {
+            min-height: 170px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: 1px solid var(--burgundy);
+        }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .notes-button {
+            border: 1px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            padding: 11px 18px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+
+        .notes-button:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .notes-button.secondary {
+            border-color: var(--border);
             color: var(--muted);
         }
 
-        .cue textarea,
-        .notes textarea {
-            min-height: 210px;
+        .notes-button.secondary:hover {
+            background: transparent;
+            color: var(--ink);
         }
 
-        .summary {
-            border-top: 1px solid var(--border);
-            padding: 25px;
+        /* SEARCH */
+
+        .notes-controls {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        .summary textarea {
-            min-height: 150px;
+        .notes-controls input,
+        .notes-controls select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.35);
+            color: var(--ink);
+            font-family: Georgia, serif;
         }
 
-        /* RESEARCH */
+        /* NOTE CARDS */
 
-        .research-list {
+        .notes-list {
             display: grid;
             gap: 12px;
         }
 
-        .research-card {
-            padding: 20px 22px;
+        .note-card {
             border: 1px solid var(--border);
-            background: var(--paper-light);
+            padding: 25px;
+            background: rgba(255,255,255,0.18);
+        }
 
-            display: grid;
-            grid-template-columns: 170px 1fr;
+        .note-card-top {
+            display: flex;
+            justify-content: space-between;
             gap: 20px;
+            align-items: flex-start;
         }
 
-        .research-card strong {
-            font-family: Arial, sans-serif;
-            font-size: .7rem;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            color: var(--brown);
-        }
-
-        .research-card p {
-            color: var(--muted);
-            font-size: .88rem;
-        }
-
-        /* CONNECTIONS */
-
-        .connections {
-            padding: 30px;
-            background: var(--brown-light);
-            border: 1px solid var(--border);
-        }
-
-        .connections h3 {
-            font-size: 1.7rem;
+        .note-card h3 {
+            margin: 0 0 7px;
+            font-size: 1.4rem;
             font-weight: normal;
-            margin-bottom: 10px;
         }
 
-        .connections p {
-            color: var(--muted);
-            margin-bottom: 22px;
-        }
-
-        .chain {
+        .note-meta {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            align-items: center;
+            margin-bottom: 18px;
         }
 
-        .chain-item {
-            padding: 9px 13px;
+        .note-tag {
+            font-family: Arial, sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.05em;
+            padding: 5px 8px;
             border: 1px solid var(--border);
-            background: var(--paper-light);
-            font-size: .85rem;
+            color: var(--muted);
         }
 
-        .arrow {
-            color: var(--brown);
+        .note-card-summary {
+            color: var(--ink);
+            line-height: 1.65;
+            margin-bottom: 18px;
         }
 
-        footer {
+        .note-card-content {
             border-top: 1px solid var(--border);
-            padding: 30px;
+            padding-top: 18px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        .note-actions {
+            display: flex;
+            gap: 7px;
+            flex-shrink: 0;
+        }
+
+        .note-action {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+        }
+
+        .note-action:hover {
+            color: var(--burgundy);
+        }
+
+        .empty-notes {
+            border: 1px dashed var(--border);
+            padding: 45px 25px;
             text-align: center;
             color: var(--muted);
+        }
 
+        .empty-notes strong {
+            display: block;
+            color: var(--ink);
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        /* CORNELL */
+
+        .cornell-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1px solid var(--border);
+        }
+
+        .cornell-cue,
+        .cornell-notes,
+        .cornell-summary {
+            padding: 24px;
+        }
+
+        .cornell-cue {
+            border-right: 1px solid var(--border);
+        }
+
+        .cornell-notes {
+            min-height: 100px;
+        }
+
+        .cornell-summary {
+            grid-column: 1 / -1;
+            border-top: 1px solid var(--border);
+        }
+
+        .cornell-label {
             font-family: Arial, sans-serif;
-            font-size: .7rem;
-            text-transform: uppercase;
-            letter-spacing: .08em;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--burgundy);
+            margin-bottom: 10px;
         }
 
-        @media(max-width:850px) {
+        .cornell-info p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
 
-            .start-grid,
-            .type-grid {
-                grid-template-columns: repeat(2,1fr);
+        /* EXPORT */
+
+        .archive-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        /* EDIT MODE */
+
+        .editing-banner {
+            display: none;
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            border-left: 3px solid var(--burgundy);
+            background: rgba(255,255,255,0.25);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .editing-banner.active {
+            display: block;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .notes-category-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .notebook {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .notes-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .notes-page {
+                padding: 25px 16px 60px;
+            }
+
+            .notes-hero {
+                padding-top: 30px;
+            }
+
+            .notes-category-grid {
                 grid-template-columns: 1fr;
             }
 
-        }
+            .note-form {
+                padding: 20px;
+            }
 
-        @media(max-width:650px) {
-
-            .nav {
+            .note-card-top {
                 flex-direction: column;
-                align-items: flex-start;
             }
 
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 12px 18px;
-            }
-
-            main {
-                padding: 50px 18px 70px;
-            }
-
-            .start-grid,
-            .type-grid {
+            .cornell-info {
                 grid-template-columns: 1fr;
             }
 
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .section-heading {
-                display: block;
-            }
-
-            .section-number {
-                display: block;
-                margin-top: 7px;
-            }
-
-            .cornell-body {
-                grid-template-columns: 1fr;
-            }
-
-            .cue {
+            .cornell-cue {
                 border-right: none;
                 border-bottom: 1px solid var(--border);
             }
 
-            .research-card {
-                grid-template-columns: 1fr;
-                gap: 7px;
+            .cornell-summary {
+                grid-column: auto;
             }
-
         }
-
     </style>
 </head>
 
@@ -536,752 +462,1579 @@
 
 <header>
 
-    <nav class="nav">
+    <div class="site-header">
 
-        <a href="index.html" class="logo">
+        <a href="index.html" class="site-logo">
             The Commonplace
         </a>
 
-        <ul class="nav-links">
-            <li><a href="philosophy.html">Philosophy</a></li>
-            <li><a href="politics.html">Politics</a></li>
-            <li><a href="music.html">Music</a></li>
-            <li><a href="notes.html">Notes</a></li>
-        </ul>
+        <nav>
+            <a href="philosophy.html">Philosophy</a>
+            <a href="politics.html">Politics</a>
+            <a href="music.html">Music</a>
+            <a href="notes.html">Notes</a>
+        </nav>
 
-    </nav>
+    </div>
 
 </header>
 
 
-<main>
+<main class="notes-page">
 
+    <!-- =====================================
+         HERO
+         ===================================== -->
 
-<section class="hero">
+    <section class="notes-hero">
 
-    <div class="eyebrow">
-        04 — Notes
-    </div>
-
-    <h1>Notes</h1>
-
-    <p>
-        The working notebook of The Commonplace: ideas, questions,
-        research, observations, arguments, connections, and things
-        worth remembering.
-    </p>
-
-</section>
-
-
-<section id="start">
-
-    <div class="section-heading">
-
-        <h2>Start here</h2>
-
-        <span class="section-number">
-            YOUR KNOWLEDGE, IN YOUR WORDS
-        </span>
-
-    </div>
-
-
-    <div class="start-grid">
-
-        <a href="#notebook" class="start-card">
-
-            <span class="number">01</span>
-
-            <h3>Open the notebook</h3>
-
-            <p>
-                Write whatever you're currently thinking or learning.
-            </p>
-
-        </a>
-
-
-        <a href="#cornell" class="start-card">
-
-            <span class="number">02</span>
-
-            <h3>Cornell notes</h3>
-
-            <p>
-                Turn lectures, books, articles, and lessons into organized notes.
-            </p>
-
-        </a>
-
-
-        <a href="#research" class="start-card">
-
-            <span class="number">03</span>
-
-            <h3>Research notes</h3>
-
-            <p>
-                Keep track of arguments, evidence, sources, and conclusions.
-            </p>
-
-        </a>
-
-
-        <a href="#questions" class="start-card">
-
-            <span class="number">04</span>
-
-            <h3>Questions</h3>
-
-            <p>
-                Save questions before you forget them.
-            </p>
-
-        </a>
-
-
-        <a href="#connections" class="start-card">
-
-            <span class="number">05</span>
-
-            <h3>Connect ideas</h3>
-
-            <p>
-                See how philosophy, politics, music, history, and other subjects overlap.
-            </p>
-
-        </a>
-
-
-        <a href="#types" class="start-card">
-
-            <span class="number">06</span>
-
-            <h3>Choose a format</h3>
-
-            <p>
-                Different kinds of thinking need different kinds of notes.
-            </p>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<section id="types">
-
-    <div class="section-heading">
-
-        <h2>Types of notes</h2>
-
-        <span class="section-number">
-            NOT EVERYTHING BELONGS IN THE SAME NOTEBOOK
-        </span>
-
-    </div>
-
-
-    <div class="type-grid">
-
-        <article class="type">
-
-            <div class="type-label">
-                Quick
-            </div>
-
-            <h3>Quick notes</h3>
-
-            <p>
-                A place to capture an idea before it disappears.
-                Don't worry about organization yet.
-            </p>
-
-        </article>
-
-
-        <article class="type">
-
-            <div class="type-label">
-                Study
-            </div>
-
-            <h3>Study notes</h3>
-
-            <p>
-                Organized explanations of material you're actively learning.
-            </p>
-
-        </article>
-
-
-        <article class="type">
-
-            <div class="type-label">
-                Research
-            </div>
-
-            <h3>Research notes</h3>
-
-            <p>
-                Evidence, sources, arguments, interpretations, and conclusions
-                gathered while investigating a question.
-            </p>
-
-        </article>
-
-
-        <article class="type">
-
-            <div class="type-label">
-                Cornell
-            </div>
-
-            <h3>Cornell notes</h3>
-
-            <p>
-                Notes divided into cues, main notes, and a summary to encourage
-                active recall and review.
-            </p>
-
-        </article>
-
-
-        <article class="type">
-
-            <div class="type-label">
-                Ideas
-            </div>
-
-            <h3>Idea notebook</h3>
-
-            <p>
-                Essay ideas, theories, projects, creative concepts,
-                questions, and connections.
-            </p>
-
-        </article>
-
-
-        <article class="type">
-
-            <div class="type-label">
-                Archive
-            </div>
-
-            <h3>Reference notes</h3>
-
-            <p>
-                Information you expect to return to repeatedly:
-                definitions, timelines, frameworks, and important facts.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<section id="notebook">
-
-    <div class="section-heading">
-
-        <h2>Open notebook</h2>
-
-        <span class="section-number">
-            WRITE FIRST · ORGANIZE LATER
-        </span>
-
-    </div>
-
-
-    <div class="notebook">
-
-        <div class="note">
-
-            <h3>Current thoughts</h3>
-
-            <p>
-                Use this for anything you're thinking about right now.
-            </p>
-
-            <textarea
-                id="currentNotes"
-                placeholder="Write here..."
-            ></textarea>
-
-            <button onclick="saveCurrent()">
-                Save
-            </button>
-
-            <span
-                class="saved"
-                id="currentSaved"
-            ></span>
-
+        <div class="notes-eyebrow">
+            04 — NOTES
         </div>
 
-
-        <div class="note">
-
-            <h3>Things to remember</h3>
-
-            <p>
-                Important ideas, facts, questions, books, people,
-                or concepts you don't want to lose.
-            </p>
-
-            <textarea
-                id="rememberNotes"
-                placeholder="I want to remember..."
-            ></textarea>
-
-            <button onclick="saveRemember()">
-                Save
-            </button>
-
-            <span
-                class="saved"
-                id="rememberSaved"
-            ></span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="cornell">
-
-    <div class="section-heading">
-
-        <h2>Cornell notes</h2>
-
-        <span class="section-number">
-            LEARN · QUESTION · RECALL
-        </span>
-
-    </div>
-
-
-    <div class="cornell">
-
-        <div class="cornell-header">
-
-            <h3>One notebook lesson</h3>
-
-            <p>
-                Put the main information in the notes area.
-                Put questions, vocabulary, and prompts in the cue column.
-                Finish with a short summary.
-            </p>
-
-        </div>
-
-
-        <div class="cornell-body">
-
-            <div class="cue">
-
-                <h4>Cues / Questions</h4>
-
-                <textarea
-                    id="cornellCue"
-                    placeholder="What? Why? How? Important terms..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="notes">
-
-                <h4>Main Notes</h4>
-
-                <textarea
-                    id="cornellMain"
-                    placeholder="Write your notes here..."
-                ></textarea>
-
-            </div>
-
-        </div>
-
-
-        <div class="summary">
-
-            <h4>Summary</h4>
-
-            <textarea
-                id="cornellSummary"
-                placeholder="Summarize the lesson in your own words..."
-            ></textarea>
-
-            <br>
-
-            <button onclick="saveCornell()">
-                Save Cornell notes
-            </button>
-
-            <span
-                class="saved"
-                id="cornellSaved"
-            ></span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="research">
-
-    <div class="section-heading">
-
-        <h2>Research notes</h2>
-
-        <span class="section-number">
-            FROM QUESTION TO CONCLUSION
-        </span>
-
-    </div>
-
-
-    <div class="research-list">
-
-        <div class="research-card">
-
-            <strong>Question</strong>
-
-            <p>
-                What am I actually trying to find out?
-            </p>
-
-        </div>
-
-
-        <div class="research-card">
-
-            <strong>Definitions</strong>
-
-            <p>
-                What words or concepts need to be defined before I can investigate this?
-            </p>
-
-        </div>
-
-
-        <div class="research-card">
-
-            <strong>Evidence</strong>
-
-            <p>
-                What sources, facts, data, historical events, or primary documents are relevant?
-            </p>
-
-        </div>
-
-
-        <div class="research-card">
-
-            <strong>Arguments</strong>
-
-            <p>
-                What are the strongest arguments supporting different positions?
-            </p>
-
-        </div>
-
-
-        <div class="research-card">
-
-            <strong>Objections</strong>
-
-            <p>
-                What are the strongest criticisms of those arguments?
-            </p>
-
-        </div>
-
-
-        <div class="research-card">
-
-            <strong>Conclusion</strong>
-
-            <p>
-                What does the evidence actually justify me believing?
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="questions">
-
-    <div class="section-heading">
-
-        <h2>Questions</h2>
-
-        <span class="section-number">
-            QUESTIONS ARE DATA
-        </span>
-
-    </div>
-
-
-    <div class="notebook">
-
-        <div class="note">
-
-            <h3>Questions I have</h3>
-
-            <p>
-                You don't need to know how to answer them yet.
-            </p>
-
-            <textarea
-                id="questions"
-                placeholder="Why...? How...? What if...? Is it possible that...?"
-            ></textarea>
-
-            <button onclick="saveQuestions()">
-                Save
-            </button>
-
-            <span
-                class="saved"
-                id="questionsSaved"
-            ></span>
-
-        </div>
-
-
-        <div class="note">
-
-            <h3>Things I want to investigate</h3>
-
-            <p>
-                Turn curiosity into future research.
-            </p>
-
-            <textarea
-                id="investigate"
-                placeholder="Topics, people, books, events, ideas..."
-            ></textarea>
-
-            <button onclick="saveInvestigate()">
-                Save
-            </button>
-
-            <span
-                class="saved"
-                id="investigateSaved"
-            ></span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="connections">
-
-    <div class="section-heading">
-
-        <h2>Connect ideas</h2>
-
-        <span class="section-number">
-            KNOWLEDGE IS A NETWORK
-        </span>
-
-    </div>
-
-
-    <div class="connections">
-
-        <h3>Example connection</h3>
+        <h1>Notes</h1>
 
         <p>
-            A single idea can lead into several different subjects.
+            The center of The Commonplace. Collect ideas, questions,
+            definitions, research, observations, quotations, and
+            connections from everything you study.
         </p>
 
 
-        <div class="chain">
+        <div class="notes-stat-row">
 
-            <span class="chain-item">
-                John Locke
-            </span>
+            <div class="notes-stat">
+                <span
+                    class="notes-stat-number"
+                    id="totalNotes"
+                >
+                    0
+                </span>
 
-            <span class="arrow">→</span>
+                <span class="notes-stat-label">
+                    TOTAL NOTES
+                </span>
+            </div>
 
-            <span class="chain-item">
-                Natural Rights
-            </span>
 
-            <span class="arrow">→</span>
+            <div class="notes-stat">
+                <span
+                    class="notes-stat-number"
+                    id="totalQuestions"
+                >
+                    0
+                </span>
 
-            <span class="chain-item">
-                Social Contract
-            </span>
+                <span class="notes-stat-label">
+                    QUESTIONS
+                </span>
+            </div>
 
-            <span class="arrow">→</span>
 
-            <span class="chain-item">
-                Liberalism
-            </span>
+            <div class="notes-stat">
+                <span
+                    class="notes-stat-number"
+                    id="totalCategories"
+                >
+                    0
+                </span>
 
-            <span class="arrow">→</span>
-
-            <span class="chain-item">
-                American Revolution
-            </span>
-
-            <span class="arrow">→</span>
-
-            <span class="chain-item">
-                U.S. Constitution
-            </span>
+                <span class="notes-stat-label">
+                    CATEGORIES USED
+                </span>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
 
+    <!-- =====================================
+         CATEGORY SHORTCUTS
+         ===================================== -->
+
+    <section class="notes-section">
+
+        <div class="notes-section-heading">
+
+            <span class="notes-section-number">
+                YOUR LIBRARY
+            </span>
+
+            <h2>What are you collecting?</h2>
+
+            <p>
+                Choose a category to filter your archive.
+            </p>
+
+        </div>
+
+
+        <div class="notes-category-grid">
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Philosophy')"
+            >
+                <div class="notes-category-name">
+                    Philosophy
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countPhilosophy"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Politics')"
+            >
+                <div class="notes-category-name">
+                    Politics
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countPolitics"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Music')"
+            >
+                <div class="notes-category-name">
+                    Music
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countMusic"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Research')"
+            >
+                <div class="notes-category-name">
+                    Research
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countResearch"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('School')"
+            >
+                <div class="notes-category-name">
+                    School
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countSchool"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Ideas')"
+            >
+                <div class="notes-category-name">
+                    Ideas
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countIdeas"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Questions')"
+            >
+                <div class="notes-category-name">
+                    Questions
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countQuestions"
+                >
+                    0 notes
+                </div>
+            </div>
+
+
+            <div
+                class="notes-category"
+                onclick="filterCategory('Other')"
+            >
+                <div class="notes-category-name">
+                    Other
+                </div>
+
+                <div
+                    class="notes-category-count"
+                    id="countOther"
+                >
+                    0 notes
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CREATE NOTE
+         ===================================== -->
+
+    <section class="notes-section" id="create">
+
+        <div class="notes-section-heading">
+
+            <span class="notes-section-number">
+                01 — CREATE
+            </span>
+
+            <h2>Write a note</h2>
+
+            <p>
+                Keep it rough. The point is to capture the idea before
+                you forget it.
+            </p>
+
+        </div>
+
+
+        <div
+            class="editing-banner"
+            id="editingBanner"
+        >
+            You are editing an existing note.
+        </div>
+
+
+        <form
+            class="note-form"
+            id="noteForm"
+            onsubmit="saveNote(event)"
+        >
+
+            <div class="form-row">
+
+                <div class="form-field">
+
+                    <label for="noteTitle">
+                        TITLE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="noteTitle"
+                        placeholder="e.g. The Social Contract"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="noteCategory">
+                        CATEGORY
+                    </label>
+
+                    <select id="noteCategory">
+
+                        <option value="Philosophy">
+                            Philosophy
+                        </option>
+
+                        <option value="Politics">
+                            Politics
+                        </option>
+
+                        <option value="Music">
+                            Music
+                        </option>
+
+                        <option value="Research">
+                            Research
+                        </option>
+
+                        <option value="School">
+                            School
+                        </option>
+
+                        <option value="Ideas">
+                            Ideas
+                        </option>
+
+                        <option value="Questions">
+                            Questions
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-field">
+
+                    <label for="noteTags">
+                        TAGS
+                    </label>
+
+                    <input
+                        type="text"
+                        id="noteTags"
+                        placeholder="e.g. freedom, government, Rousseau"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="noteSource">
+                        SOURCE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="noteSource"
+                        placeholder="Book, article, class, video..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-field full">
+
+                <label for="noteSummary">
+                    SUMMARY / MAIN IDEA
+                </label>
+
+                <input
+                    type="text"
+                    id="noteSummary"
+                    placeholder="What is the main thing you want to remember?"
+                >
+
+            </div>
+
+
+            <div class="form-field full">
+
+                <label for="noteContent">
+                    NOTE
+                </label>
+
+                <textarea
+                    id="noteContent"
+                    placeholder="Write your thoughts, facts, questions, connections, quotations, etc."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="notes-button"
+                    id="saveButton"
+                >
+                    Save note
+                </button>
+
+
+                <button
+                    type="button"
+                    class="notes-button secondary"
+                    onclick="clearForm()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================================
+         CORNELL METHOD
+         ===================================== -->
+
+    <section class="notes-section">
+
+        <div class="notes-section-heading">
+
+            <span class="notes-section-number">
+                02 — METHOD
+            </span>
+
+            <h2>A simple Cornell structure</h2>
+
+            <p>
+                You don't have to use this structure every time, but it
+                gives longer notes a useful shape.
+            </p>
+
+        </div>
+
+
+        <div class="cornell-info">
+
+            <div class="cornell-cue">
+
+                <div class="cornell-label">
+                    CUE / QUESTION
+                </div>
+
+                <p>
+                    What question does this note answer?
+                    What should you be able to recall later?
+                </p>
+
+            </div>
+
+
+            <div class="cornell-notes">
+
+                <div class="cornell-label">
+                    NOTES
+                </div>
+
+                <p>
+                    Facts, arguments, examples, quotations,
+                    observations, and connections.
+                </p>
+
+            </div>
+
+
+            <div class="cornell-summary">
+
+                <div class="cornell-label">
+                    SUMMARY
+                </div>
+
+                <p>
+                    Explain the whole idea in your own words.
+                    If you cannot summarize it, you may not understand
+                    it yet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ARCHIVE
+         ===================================== -->
+
+    <section class="notes-section" id="archive">
+
+        <div class="notes-section-heading">
+
+            <span class="notes-section-number">
+                03 — ARCHIVE
+            </span>
+
+            <h2>Your notes</h2>
+
+            <p>
+                Search and filter everything you've collected.
+            </p>
+
+        </div>
+
+
+        <div class="notes-controls">
+
+            <input
+                type="search"
+                id="noteSearch"
+                placeholder="Search your notes..."
+                oninput="displayNotes()"
+            >
+
+
+            <select
+                id="noteFilter"
+                onchange="displayNotes()"
+            >
+
+                <option value="All">
+                    All categories
+                </option>
+
+                <option value="Philosophy">
+                    Philosophy
+                </option>
+
+                <option value="Politics">
+                    Politics
+                </option>
+
+                <option value="Music">
+                    Music
+                </option>
+
+                <option value="Research">
+                    Research
+                </option>
+
+                <option value="School">
+                    School
+                </option>
+
+                <option value="Ideas">
+                    Ideas
+                </option>
+
+                <option value="Questions">
+                    Questions
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="notes-list"
+            id="notesList"
+        ></div>
+
+    </section>
+
+
+    <!-- =====================================
+         ARCHIVE TOOLS
+         ===================================== -->
+
+    <section class="notes-section">
+
+        <div class="notes-section-heading">
+
+            <span class="notes-section-number">
+                04 — ARCHIVE TOOLS
+            </span>
+
+            <h2>Take your notes with you</h2>
+
+            <p>
+                Your notes are stored in this browser. Export a backup
+                regularly so your archive is not dependent on one device.
+            </p>
+
+        </div>
+
+
+        <div class="archive-tools">
+
+            <button
+                class="notes-button"
+                onclick="exportNotes()"
+            >
+                Export notes
+            </button>
+
+
+            <button
+                class="notes-button secondary"
+                onclick="importNotes()"
+            >
+                Import notes
+            </button>
+
+
+            <input
+                type="file"
+                id="importFile"
+                accept=".json"
+                style="display:none"
+                onchange="handleImport(event)"
+            >
+
+        </div>
+
+    </section>
 
 </main>
 
 
 <footer>
-    The Commonplace · Notes
+
+    <p>
+        A personal library of ideas.
+    </p>
+
 </footer>
 
 
 <script>
 
-function save(key, elementId, messageId) {
+    /* =========================================
+       DATA
+       ========================================= */
 
-    const value =
-        document.getElementById(elementId).value;
+    const STORAGE_KEY = "commonplaceNotes";
 
-    localStorage.setItem(key, value);
-
-    document.getElementById(messageId).textContent =
-        "Saved locally.";
-
-}
+    let editingId = null;
 
 
-function saveCurrent() {
-    save(
-        "commonplaceCurrentNotes",
-        "currentNotes",
-        "currentSaved"
-    );
-}
-
-
-function saveRemember() {
-    save(
-        "commonplaceRememberNotes",
-        "rememberNotes",
-        "rememberSaved"
-    );
-}
-
-
-function saveCornell() {
-
-    localStorage.setItem(
-        "commonplaceCornellCue",
-        document.getElementById("cornellCue").value
-    );
-
-    localStorage.setItem(
-        "commonplaceCornellMain",
-        document.getElementById("cornellMain").value
-    );
-
-    localStorage.setItem(
-        "commonplaceCornellSummary",
-        document.getElementById("cornellSummary").value
-    );
-
-    document.getElementById("cornellSaved").textContent =
-        "Saved locally.";
-
-}
-
-
-function saveQuestions() {
-    save(
-        "commonplaceQuestions",
-        "questions",
-        "questionsSaved"
-    );
-}
-
-
-function saveInvestigate() {
-    save(
-        "commonplaceInvestigate",
-        "investigate",
-        "investigateSaved"
-    );
-}
-
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    const fields = {
-
-        currentNotes:
-            "commonplaceCurrentNotes",
-
-        rememberNotes:
-            "commonplaceRememberNotes",
-
-        cornellCue:
-            "commonplaceCornellCue",
-
-        cornellMain:
-            "commonplaceCornellMain",
-
-        cornellSummary:
-            "commonplaceCornellSummary",
-
-        questions:
-            "commonplaceQuestions",
-
-        investigate:
-            "commonplaceInvestigate"
-
-    };
-
-
-    Object.keys(fields).forEach(function(field) {
+    function getNotes() {
 
         const saved =
-            localStorage.getItem(fields[field]);
+            localStorage.getItem(STORAGE_KEY);
 
-        if (saved) {
+        if (!saved) {
+            return [];
+        }
 
-            document.getElementById(field).value =
-                saved;
+        try {
+
+            return JSON.parse(saved);
+
+        } catch (error) {
+
+            console.error("Could not read notes.", error);
+
+            return [];
 
         }
 
-    });
+    }
 
-});
+
+    function saveNotes(notes) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(notes)
+        );
+
+    }
+
+
+    /* =========================================
+       CREATE / EDIT NOTE
+       ========================================= */
+
+    function saveNote(event) {
+
+        event.preventDefault();
+
+
+        const title =
+            document.getElementById("noteTitle")
+            .value
+            .trim();
+
+
+        const category =
+            document.getElementById("noteCategory")
+            .value;
+
+
+        const tags =
+            document.getElementById("noteTags")
+            .value
+            .trim();
+
+
+        const source =
+            document.getElementById("noteSource")
+            .value
+            .trim();
+
+
+        const summary =
+            document.getElementById("noteSummary")
+            .value
+            .trim();
+
+
+        const content =
+            document.getElementById("noteContent")
+            .value
+            .trim();
+
+
+        if (!title || !content) {
+
+            alert(
+                "Please add a title and some note content."
+            );
+
+            return;
+
+        }
+
+
+        const notes = getNotes();
+
+
+        if (editingId !== null) {
+
+            const index =
+                notes.findIndex(
+                    note => note.id === editingId
+                );
+
+
+            if (index !== -1) {
+
+                notes[index] = {
+
+                    ...notes[index],
+
+                    title,
+                    category,
+                    tags,
+                    source,
+                    summary,
+                    content,
+
+                    updated:
+                        new Date().toISOString()
+
+                };
+
+            }
+
+
+            editingId = null;
+
+            document
+                .getElementById("editingBanner")
+                .classList.remove("active");
+
+
+            document
+                .getElementById("saveButton")
+                .textContent = "Save note";
+
+        } else {
+
+            const newNote = {
+
+                id:
+                    Date.now(),
+
+                title,
+
+                category,
+
+                tags,
+
+                source,
+
+                summary,
+
+                content,
+
+                created:
+                    new Date().toISOString(),
+
+                updated:
+                    new Date().toISOString()
+
+            };
+
+
+            notes.unshift(newNote);
+
+        }
+
+
+        saveNotes(notes);
+
+        clearForm();
+
+        displayNotes();
+
+        updateStats();
+
+        updateCategoryCounts();
+
+
+        document
+            .getElementById("archive")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* =========================================
+       EDIT
+       ========================================= */
+
+    function editNote(id) {
+
+        const notes = getNotes();
+
+
+        const note =
+            notes.find(
+                item => item.id === id
+            );
+
+
+        if (!note) {
+            return;
+        }
+
+
+        editingId = id;
+
+
+        document
+            .getElementById("noteTitle")
+            .value = note.title;
+
+
+        document
+            .getElementById("noteCategory")
+            .value = note.category;
+
+
+        document
+            .getElementById("noteTags")
+            .value = note.tags || "";
+
+
+        document
+            .getElementById("noteSource")
+            .value = note.source || "";
+
+
+        document
+            .getElementById("noteSummary")
+            .value = note.summary || "";
+
+
+        document
+            .getElementById("noteContent")
+            .value = note.content;
+
+
+        document
+            .getElementById("editingBanner")
+            .classList.add("active");
+
+
+        document
+            .getElementById("saveButton")
+            .textContent = "Update note";
+
+
+        document
+            .getElementById("create")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* =========================================
+       DELETE
+       ========================================= */
+
+    function deleteNote(id) {
+
+        const notes = getNotes();
+
+
+        const note =
+            notes.find(
+                item => item.id === id
+            );
+
+
+        if (!note) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                `Delete "${note.title}"?`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        const remaining =
+            notes.filter(
+                item => item.id !== id
+            );
+
+
+        saveNotes(remaining);
+
+        displayNotes();
+
+        updateStats();
+
+        updateCategoryCounts();
+
+    }
+
+
+    /* =========================================
+       CLEAR FORM
+       ========================================= */
+
+    function clearForm() {
+
+        document
+            .getElementById("noteForm")
+            .reset();
+
+
+        editingId = null;
+
+
+        document
+            .getElementById("editingBanner")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("saveButton")
+            .textContent = "Save note";
+
+    }
+
+
+    /* =========================================
+       DISPLAY NOTES
+       ========================================= */
+
+    function displayNotes() {
+
+        const container =
+            document.getElementById("notesList");
+
+
+        const search =
+            document
+                .getElementById("noteSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const filter =
+            document
+                .getElementById("noteFilter")
+                .value;
+
+
+        let notes = getNotes();
+
+
+        notes = notes.filter(function(note) {
+
+            const searchableText = (
+
+                note.title +
+                " " +
+                note.category +
+                " " +
+                note.tags +
+                " " +
+                note.source +
+                " " +
+                note.summary +
+                " " +
+                note.content
+
+            ).toLowerCase();
+
+
+            const matchesSearch =
+                searchableText.includes(search);
+
+
+            const matchesCategory =
+                filter === "All" ||
+                note.category === filter;
+
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+
+        });
+
+
+        container.innerHTML = "";
+
+
+        if (notes.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-notes">
+
+                    <strong>
+                        No notes found.
+                    </strong>
+
+                    <span>
+                        Create your first note above,
+                        or change your search/filter.
+                    </span>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        notes.forEach(function(note) {
+
+            const card =
+                document.createElement("article");
+
+
+            card.className = "note-card";
+
+
+            const tagsHTML =
+                createTagsHTML(note.tags);
+
+
+            const date =
+                formatDate(note.updated);
+
+
+            card.innerHTML = `
+
+                <div class="note-card-top">
+
+                    <div>
+
+                        <h3>
+                            ${escapeHTML(note.title)}
+                        </h3>
+
+                        <div class="note-meta">
+
+                            <span class="note-tag">
+                                ${escapeHTML(note.category)}
+                            </span>
+
+                            ${tagsHTML}
+
+                            <span class="note-tag">
+                                ${escapeHTML(date)}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="note-actions">
+
+                        <button
+                            class="note-action"
+                            onclick="editNote(${note.id})"
+                        >
+                            edit
+                        </button>
+
+                        <button
+                            class="note-action"
+                            onclick="deleteNote(${note.id})"
+                        >
+                            delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                ${
+                    note.summary
+                    ?
+                    `
+                    <div class="note-card-summary">
+                        ${escapeHTML(note.summary)}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="note-card-content">
+                    ${escapeHTML(note.content)}
+                </div>
+
+
+                ${
+                    note.source
+                    ?
+                    `
+                    <div
+                        style="
+                            margin-top:15px;
+                            font-size:0.75rem;
+                            color:var(--muted);
+                            font-style:italic;
+                        "
+                    >
+                        Source:
+                        ${escapeHTML(note.source)}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            `;
+
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================================
+       TAGS
+       ========================================= */
+
+    function createTagsHTML(tags) {
+
+        if (!tags) {
+            return "";
+        }
+
+
+        return tags
+            .split(",")
+            .map(tag => tag.trim())
+            .filter(tag => tag.length > 0)
+            .map(
+                tag => `
+                    <span class="note-tag">
+                        ${escapeHTML(tag)}
+                    </span>
+                `
+            )
+            .join("");
+
+    }
+
+
+    /* =========================================
+       CATEGORY FILTER
+       ========================================= */
+
+    function filterCategory(category) {
+
+        document
+            .getElementById("noteFilter")
+            .value = category;
+
+
+        document
+            .getElementById("archive")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+        displayNotes();
+
+    }
+
+
+    /* =========================================
+       STATISTICS
+       ========================================= */
+
+    function updateStats() {
+
+        const notes = getNotes();
+
+
+        document
+            .getElementById("totalNotes")
+            .textContent = notes.length;
+
+
+        const questions =
+            notes.filter(
+                note => note.category === "Questions"
+            );
+
+
+        document
+            .getElementById("totalQuestions")
+            .textContent =
+                questions.length;
+
+
+        const categories =
+            new Set(
+                notes.map(
+                    note => note.category
+                )
+            );
+
+
+        document
+            .getElementById("totalCategories")
+            .textContent =
+                categories.size;
+
+    }
+
+
+    /* =========================================
+       CATEGORY COUNTS
+       ========================================= */
+
+    function updateCategoryCounts() {
+
+        const notes = getNotes();
+
+
+        const categories = [
+            "Philosophy",
+            "Politics",
+            "Music",
+            "Research",
+            "School",
+            "Ideas",
+            "Questions",
+            "Other"
+        ];
+
+
+        categories.forEach(function(category) {
+
+            const count =
+                notes.filter(
+                    note => note.category === category
+                ).length;
+
+
+            const element =
+                document.getElementById(
+                    "count" + category
+                );
+
+
+            if (element) {
+
+                element.textContent =
+                    count +
+                    (
+                        count === 1
+                        ? " note"
+                        : " notes"
+                    );
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================================
+       EXPORT
+       ========================================= */
+
+    function exportNotes() {
+
+        const notes = getNotes();
+
+
+        if (notes.length === 0) {
+
+            alert(
+                "There are no notes to export yet."
+            );
+
+            return;
+
+        }
+
+
+        const data =
+            JSON.stringify(
+                notes,
+                null,
+                2
+            );
+
+
+        const blob =
+            new Blob(
+                [data],
+                {
+                    type: "application/json"
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = url;
+
+
+        const date =
+            new Date()
+                .toISOString()
+                .slice(0, 10);
+
+
+        link.download =
+            `commonplace-notes-${date}.json`;
+
+
+        link.click();
+
+
+        URL.revokeObjectURL(url);
+
+    }
+
+
+    /* =========================================
+       IMPORT
+       ========================================= */
+
+    function importNotes() {
+
+        document
+            .getElementById("importFile")
+            .click();
+
+    }
+
+
+    function handleImport(event) {
+
+        const file =
+            event.target.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(e) {
+
+            try {
+
+                const imported =
+                    JSON.parse(
+                        e.target.result
+                    );
+
+
+                if (!Array.isArray(imported)) {
+
+                    throw new Error(
+                        "Invalid format"
+                    );
+
+                }
+
+
+                const current =
+                    getNotes();
+
+
+                const combined = [
+                    ...current,
+                    ...imported
+                ];
+
+
+                const unique =
+                    Array.from(
+                        new Map(
+                            combined.map(
+                                note => [
+                                    note.id,
+                                    note
+                                ]
+                            )
+                        ).values()
+                    );
+
+
+                saveNotes(unique);
+
+                displayNotes();
+
+                updateStats();
+
+                updateCategoryCounts();
+
+
+                alert(
+                    "Notes imported successfully."
+                );
+
+            } catch (error) {
+
+                alert(
+                    "That file could not be imported."
+                );
+
+            }
+
+
+            event.target.value = "";
+
+        };
+
+
+        reader.readAsText(file);
+
+    }
+
+
+    /* =========================================
+       SECURITY / TEXT ESCAPING
+       ========================================= */
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.textContent =
+            text || "";
+
+
+        return div.innerHTML;
+
+    }
+
+
+    /* =========================================
+       DATE
+       ========================================= */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+            return "";
+        }
+
+
+        const date =
+            new Date(dateString);
+
+
+        return date.toLocaleDateString(
+            undefined,
+            {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       INITIALIZE
+       ========================================= */
+
+    displayNotes();
+
+    updateStats();
+
+    updateCategoryCounts();
 
 </script>
 
