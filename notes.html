@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notes — The Commonplace</title>
+
+    <style>
+
+        :root {
+            --paper: #f3efe6;
+            --paper-light: #faf8f3;
+            --paper-dark: #e8e1d4;
+
+            --ink: #292721;
+            --muted: #716a5e;
+            --border: #c9c0b1;
+
+            --brown: #75604d;
+            --brown-light: #ebe4dc;
+
+            --burgundy: #70494a;
+            --olive: #62664e;
+            --navy: #4c5961;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(243,239,230,.96);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 28px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+
+            font-family: Arial, sans-serif;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--brown);
+        }
+
+        main {
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 28px 100px;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin-bottom: 80px;
+        }
+
+        .eyebrow {
+            font-family: Arial, sans-serif;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: var(--brown);
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: .95;
+            font-weight: normal;
+            letter-spacing: -.045em;
+            margin-bottom: 28px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--muted);
+        }
+
+        .section-heading {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            margin-bottom: 38px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .section-heading h2 {
+            font-size: 2.4rem;
+            font-weight: normal;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: .72rem;
+            color: var(--muted);
+            letter-spacing: .1em;
+        }
+
+        .intro {
+            max-width: 720px;
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        /* START */
+
+        .start-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+        }
+
+        .start-card {
+            padding: 26px;
+            min-height: 180px;
+
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--brown);
+
+            transition: .2s ease;
+        }
+
+        .start-card:nth-child(2) {
+            border-top-color: var(--burgundy);
+        }
+
+        .start-card:nth-child(3) {
+            border-top-color: var(--navy);
+        }
+
+        .start-card:nth-child(4) {
+            border-top-color: var(--olive);
+        }
+
+        .start-card:nth-child(5) {
+            border-top-color: var(--brown);
+        }
+
+        .start-card:nth-child(6) {
+            border-top-color: var(--burgundy);
+        }
+
+        .start-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(55,48,39,.08);
+        }
+
+        .number {
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            color: var(--muted);
+        }
+
+        .start-card h3 {
+            font-size: 1.35rem;
+            font-weight: normal;
+            margin: 20px 0 8px;
+        }
+
+        .start-card p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        /* NOTE TYPES */
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+        }
+
+        .type {
+            padding: 25px;
+            min-height: 220px;
+
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+        }
+
+        .type h3 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .type p {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .type-label {
+            font-family: Arial, sans-serif;
+            font-size: .65rem;
+            color: var(--brown);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 16px;
+        }
+
+        /* NOTEBOOK */
+
+        .notebook {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .note {
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+
+        .note h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .note p {
+            color: var(--muted);
+            font-size: .88rem;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+
+            padding: 16px;
+
+            background: var(--paper);
+            border: 1px solid var(--border);
+
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: var(--brown);
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+
+            background: var(--paper);
+            border: 1px solid var(--border);
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--paper-dark);
+            border-color: var(--brown);
+        }
+
+        .saved {
+            font-family: Arial, sans-serif;
+            font-size: .65rem;
+            color: var(--olive);
+            margin-left: 10px;
+        }
+
+        /* CORNELL */
+
+        .cornell {
+            border: 1px solid var(--border);
+            background: var(--paper-light);
+        }
+
+        .cornell-header {
+            padding: 25px;
+            background: var(--brown-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cornell-header h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+        }
+
+        .cornell-header p {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .cornell-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .cue,
+        .notes {
+            padding: 25px;
+            min-height: 280px;
+        }
+
+        .cue {
+            border-right: 1px solid var(--border);
+            background: var(--paper-dark);
+        }
+
+        .cue h4,
+        .notes h4 {
+            font-family: Arial, sans-serif;
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 12px;
+            color: var(--muted);
+        }
+
+        .cue textarea,
+        .notes textarea {
+            min-height: 210px;
+        }
+
+        .summary {
+            border-top: 1px solid var(--border);
+            padding: 25px;
+        }
+
+        .summary textarea {
+            min-height: 150px;
+        }
+
+        /* RESEARCH */
+
+        .research-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .research-card {
+            padding: 20px 22px;
+            border: 1px solid var(--border);
+            background: var(--paper-light);
+
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 20px;
+        }
+
+        .research-card strong {
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--brown);
+        }
+
+        .research-card p {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        /* CONNECTIONS */
+
+        .connections {
+            padding: 30px;
+            background: var(--brown-light);
+            border: 1px solid var(--border);
+        }
+
+        .connections h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .connections p {
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chain-item {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            background: var(--paper-light);
+            font-size: .85rem;
+        }
+
+        .arrow {
+            color: var(--brown);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            color: var(--muted);
+
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        @media(max-width:850px) {
+
+            .start-grid,
+            .type-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .notebook {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width:650px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            main {
+                padding: 50px 18px 70px;
+            }
+
+            .start-grid,
+            .type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-number {
+                display: block;
+                margin-top: 7px;
+            }
+
+            .cornell-body {
+                grid-template-columns: 1fr;
+            }
+
+            .cue {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .research-card {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav class="nav">
+
+        <a href="index.html" class="logo">
+            The Commonplace
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="politics.html">Politics</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="eyebrow">
+        04 — Notes
+    </div>
+
+    <h1>Notes</h1>
+
+    <p>
+        The working notebook of The Commonplace: ideas, questions,
+        research, observations, arguments, connections, and things
+        worth remembering.
+    </p>
+
+</section>
+
+
+<section id="start">
+
+    <div class="section-heading">
+
+        <h2>Start here</h2>
+
+        <span class="section-number">
+            YOUR KNOWLEDGE, IN YOUR WORDS
+        </span>
+
+    </div>
+
+
+    <div class="start-grid">
+
+        <a href="#notebook" class="start-card">
+
+            <span class="number">01</span>
+
+            <h3>Open the notebook</h3>
+
+            <p>
+                Write whatever you're currently thinking or learning.
+            </p>
+
+        </a>
+
+
+        <a href="#cornell" class="start-card">
+
+            <span class="number">02</span>
+
+            <h3>Cornell notes</h3>
+
+            <p>
+                Turn lectures, books, articles, and lessons into organized notes.
+            </p>
+
+        </a>
+
+
+        <a href="#research" class="start-card">
+
+            <span class="number">03</span>
+
+            <h3>Research notes</h3>
+
+            <p>
+                Keep track of arguments, evidence, sources, and conclusions.
+            </p>
+
+        </a>
+
+
+        <a href="#questions" class="start-card">
+
+            <span class="number">04</span>
+
+            <h3>Questions</h3>
+
+            <p>
+                Save questions before you forget them.
+            </p>
+
+        </a>
+
+
+        <a href="#connections" class="start-card">
+
+            <span class="number">05</span>
+
+            <h3>Connect ideas</h3>
+
+            <p>
+                See how philosophy, politics, music, history, and other subjects overlap.
+            </p>
+
+        </a>
+
+
+        <a href="#types" class="start-card">
+
+            <span class="number">06</span>
+
+            <h3>Choose a format</h3>
+
+            <p>
+                Different kinds of thinking need different kinds of notes.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="types">
+
+    <div class="section-heading">
+
+        <h2>Types of notes</h2>
+
+        <span class="section-number">
+            NOT EVERYTHING BELONGS IN THE SAME NOTEBOOK
+        </span>
+
+    </div>
+
+
+    <div class="type-grid">
+
+        <article class="type">
+
+            <div class="type-label">
+                Quick
+            </div>
+
+            <h3>Quick notes</h3>
+
+            <p>
+                A place to capture an idea before it disappears.
+                Don't worry about organization yet.
+            </p>
+
+        </article>
+
+
+        <article class="type">
+
+            <div class="type-label">
+                Study
+            </div>
+
+            <h3>Study notes</h3>
+
+            <p>
+                Organized explanations of material you're actively learning.
+            </p>
+
+        </article>
+
+
+        <article class="type">
+
+            <div class="type-label">
+                Research
+            </div>
+
+            <h3>Research notes</h3>
+
+            <p>
+                Evidence, sources, arguments, interpretations, and conclusions
+                gathered while investigating a question.
+            </p>
+
+        </article>
+
+
+        <article class="type">
+
+            <div class="type-label">
+                Cornell
+            </div>
+
+            <h3>Cornell notes</h3>
+
+            <p>
+                Notes divided into cues, main notes, and a summary to encourage
+                active recall and review.
+            </p>
+
+        </article>
+
+
+        <article class="type">
+
+            <div class="type-label">
+                Ideas
+            </div>
+
+            <h3>Idea notebook</h3>
+
+            <p>
+                Essay ideas, theories, projects, creative concepts,
+                questions, and connections.
+            </p>
+
+        </article>
+
+
+        <article class="type">
+
+            <div class="type-label">
+                Archive
+            </div>
+
+            <h3>Reference notes</h3>
+
+            <p>
+                Information you expect to return to repeatedly:
+                definitions, timelines, frameworks, and important facts.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section id="notebook">
+
+    <div class="section-heading">
+
+        <h2>Open notebook</h2>
+
+        <span class="section-number">
+            WRITE FIRST · ORGANIZE LATER
+        </span>
+
+    </div>
+
+
+    <div class="notebook">
+
+        <div class="note">
+
+            <h3>Current thoughts</h3>
+
+            <p>
+                Use this for anything you're thinking about right now.
+            </p>
+
+            <textarea
+                id="currentNotes"
+                placeholder="Write here..."
+            ></textarea>
+
+            <button onclick="saveCurrent()">
+                Save
+            </button>
+
+            <span
+                class="saved"
+                id="currentSaved"
+            ></span>
+
+        </div>
+
+
+        <div class="note">
+
+            <h3>Things to remember</h3>
+
+            <p>
+                Important ideas, facts, questions, books, people,
+                or concepts you don't want to lose.
+            </p>
+
+            <textarea
+                id="rememberNotes"
+                placeholder="I want to remember..."
+            ></textarea>
+
+            <button onclick="saveRemember()">
+                Save
+            </button>
+
+            <span
+                class="saved"
+                id="rememberSaved"
+            ></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="cornell">
+
+    <div class="section-heading">
+
+        <h2>Cornell notes</h2>
+
+        <span class="section-number">
+            LEARN · QUESTION · RECALL
+        </span>
+
+    </div>
+
+
+    <div class="cornell">
+
+        <div class="cornell-header">
+
+            <h3>One notebook lesson</h3>
+
+            <p>
+                Put the main information in the notes area.
+                Put questions, vocabulary, and prompts in the cue column.
+                Finish with a short summary.
+            </p>
+
+        </div>
+
+
+        <div class="cornell-body">
+
+            <div class="cue">
+
+                <h4>Cues / Questions</h4>
+
+                <textarea
+                    id="cornellCue"
+                    placeholder="What? Why? How? Important terms..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="notes">
+
+                <h4>Main Notes</h4>
+
+                <textarea
+                    id="cornellMain"
+                    placeholder="Write your notes here..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary">
+
+            <h4>Summary</h4>
+
+            <textarea
+                id="cornellSummary"
+                placeholder="Summarize the lesson in your own words..."
+            ></textarea>
+
+            <br>
+
+            <button onclick="saveCornell()">
+                Save Cornell notes
+            </button>
+
+            <span
+                class="saved"
+                id="cornellSaved"
+            ></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="research">
+
+    <div class="section-heading">
+
+        <h2>Research notes</h2>
+
+        <span class="section-number">
+            FROM QUESTION TO CONCLUSION
+        </span>
+
+    </div>
+
+
+    <div class="research-list">
+
+        <div class="research-card">
+
+            <strong>Question</strong>
+
+            <p>
+                What am I actually trying to find out?
+            </p>
+
+        </div>
+
+
+        <div class="research-card">
+
+            <strong>Definitions</strong>
+
+            <p>
+                What words or concepts need to be defined before I can investigate this?
+            </p>
+
+        </div>
+
+
+        <div class="research-card">
+
+            <strong>Evidence</strong>
+
+            <p>
+                What sources, facts, data, historical events, or primary documents are relevant?
+            </p>
+
+        </div>
+
+
+        <div class="research-card">
+
+            <strong>Arguments</strong>
+
+            <p>
+                What are the strongest arguments supporting different positions?
+            </p>
+
+        </div>
+
+
+        <div class="research-card">
+
+            <strong>Objections</strong>
+
+            <p>
+                What are the strongest criticisms of those arguments?
+            </p>
+
+        </div>
+
+
+        <div class="research-card">
+
+            <strong>Conclusion</strong>
+
+            <p>
+                What does the evidence actually justify me believing?
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="questions">
+
+    <div class="section-heading">
+
+        <h2>Questions</h2>
+
+        <span class="section-number">
+            QUESTIONS ARE DATA
+        </span>
+
+    </div>
+
+
+    <div class="notebook">
+
+        <div class="note">
+
+            <h3>Questions I have</h3>
+
+            <p>
+                You don't need to know how to answer them yet.
+            </p>
+
+            <textarea
+                id="questions"
+                placeholder="Why...? How...? What if...? Is it possible that...?"
+            ></textarea>
+
+            <button onclick="saveQuestions()">
+                Save
+            </button>
+
+            <span
+                class="saved"
+                id="questionsSaved"
+            ></span>
+
+        </div>
+
+
+        <div class="note">
+
+            <h3>Things I want to investigate</h3>
+
+            <p>
+                Turn curiosity into future research.
+            </p>
+
+            <textarea
+                id="investigate"
+                placeholder="Topics, people, books, events, ideas..."
+            ></textarea>
+
+            <button onclick="saveInvestigate()">
+                Save
+            </button>
+
+            <span
+                class="saved"
+                id="investigateSaved"
+            ></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="connections">
+
+    <div class="section-heading">
+
+        <h2>Connect ideas</h2>
+
+        <span class="section-number">
+            KNOWLEDGE IS A NETWORK
+        </span>
+
+    </div>
+
+
+    <div class="connections">
+
+        <h3>Example connection</h3>
+
+        <p>
+            A single idea can lead into several different subjects.
+        </p>
+
+
+        <div class="chain">
+
+            <span class="chain-item">
+                John Locke
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span class="chain-item">
+                Natural Rights
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span class="chain-item">
+                Social Contract
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span class="chain-item">
+                Liberalism
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span class="chain-item">
+                American Revolution
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span class="chain-item">
+                U.S. Constitution
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+    The Commonplace · Notes
+</footer>
+
+
+<script>
+
+function save(key, elementId, messageId) {
+
+    const value =
+        document.getElementById(elementId).value;
+
+    localStorage.setItem(key, value);
+
+    document.getElementById(messageId).textContent =
+        "Saved locally.";
+
+}
+
+
+function saveCurrent() {
+    save(
+        "commonplaceCurrentNotes",
+        "currentNotes",
+        "currentSaved"
+    );
+}
+
+
+function saveRemember() {
+    save(
+        "commonplaceRememberNotes",
+        "rememberNotes",
+        "rememberSaved"
+    );
+}
+
+
+function saveCornell() {
+
+    localStorage.setItem(
+        "commonplaceCornellCue",
+        document.getElementById("cornellCue").value
+    );
+
+    localStorage.setItem(
+        "commonplaceCornellMain",
+        document.getElementById("cornellMain").value
+    );
+
+    localStorage.setItem(
+        "commonplaceCornellSummary",
+        document.getElementById("cornellSummary").value
+    );
+
+    document.getElementById("cornellSaved").textContent =
+        "Saved locally.";
+
+}
+
+
+function saveQuestions() {
+    save(
+        "commonplaceQuestions",
+        "questions",
+        "questionsSaved"
+    );
+}
+
+
+function saveInvestigate() {
+    save(
+        "commonplaceInvestigate",
+        "investigate",
+        "investigateSaved"
+    );
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const fields = {
+
+        currentNotes:
+            "commonplaceCurrentNotes",
+
+        rememberNotes:
+            "commonplaceRememberNotes",
+
+        cornellCue:
+            "commonplaceCornellCue",
+
+        cornellMain:
+            "commonplaceCornellMain",
+
+        cornellSummary:
+            "commonplaceCornellSummary",
+
+        questions:
+            "commonplaceQuestions",
+
+        investigate:
+            "commonplaceInvestigate"
+
+    };
+
+
+    Object.keys(fields).forEach(function(field) {
+
+        const saved =
+            localStorage.getItem(fields[field]);
+
+        if (saved) {
+
+            document.getElementById(field).value =
+                saved;
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
