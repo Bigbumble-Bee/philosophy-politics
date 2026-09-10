@@ -508,27 +508,131 @@
                 grid-column: auto;
             }
         }
+ /* =========================================
+   COMMONPLACE HEADER
+   ========================================= */
+
+.commonplace-header {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8.5%;
+
+    min-height: 66px;
+
+    border-bottom: 1px solid var(--border);
+
+    background: var(--cream);
+
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+
+.commonplace-logo {
+    font-family: Georgia, "Times New Roman", serif !important;
+
+    font-size: 1.35rem;
+    font-weight: bold;
+
+    color: var(--ink) !important;
+
+    text-decoration: none !important;
+
+    white-space: nowrap;
+}
+
+.commonplace-logo:hover {
+    color: var(--ink) !important;
+    text-decoration: none !important;
+}
+
+/* Navigation */
+
+.commonplace-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.commonplace-nav a {
+    font-family: Arial, sans-serif !important;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+    color: var(--muted) !important;
+
+    text-decoration: none !important;
+
+    border: none !important;
+    border-bottom: none !important;
+
+    padding: 0;
+
+    transition: color 0.2s ease;
+}
+
+.commonplace-nav a:hover {
+    color: var(--ink) !important;
+
+    text-decoration: none !important;
+
+    border: none !important;
+    border-bottom: none !important;
+}
+
+/* Current page */
+
+.commonplace-nav a[href="notes.html"] {
+    color: var(--ink) !important;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .commonplace-header {
+        padding: 18px 24px;
+
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .commonplace-nav {
+        gap: 18px;
+
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}       
     </style>
 </head>
 
 <body>
 
-<header>
+<header class="commonplace-header">
 
-    <div class="site-header">
+    <a href="index.html" class="commonplace-logo">
+        The Commonplace
+    </a>
 
-        <a href="index.html" class="site-logo">
-            The Commonplace
-        </a>
+    <nav class="commonplace-nav">
+        <a href="philosophy.html">Philosophy</a>
+        <a href="politics.html">Politics</a>
+        <a href="music.html">Music</a>
+        <a href="notes.html">Notes</a>
+    </nav>
 
-        <nav>
-            <a href="philosophy.html">Philosophy</a>
-            <a href="politics.html">Politics</a>
-            <a href="music.html">Music</a>
-            <a href="notes.html">Notes</a>
-        </nav>
-
-    </div>
+</header>
 
 </header>
 
