@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music — The Commonplace</title>
+
+    <style>
+        :root {
+            --paper: #f3efe6;
+            --paper-light: #faf8f3;
+            --paper-dark: #e8e1d4;
+            --ink: #292721;
+            --muted: #716a5e;
+            --border: #c9c0b1;
+            --olive: #62664e;
+            --olive-light: #e7e8dc;
+            --burgundy: #70494a;
+            --navy: #4c5961;
+            --brown: #75604d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(243,239,230,.96);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            font-family: Arial, sans-serif;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--olive);
+        }
+
+        main {
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 28px 100px;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+            margin-bottom: 110px;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin-bottom: 80px;
+        }
+
+        .eyebrow {
+            font-family: Arial, sans-serif;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: var(--olive);
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: .95;
+            font-weight: normal;
+            letter-spacing: -.045em;
+            margin-bottom: 28px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--muted);
+        }
+
+        .section-heading {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            margin-bottom: 38px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .section-heading h2 {
+            font-size: 2.4rem;
+            font-weight: normal;
+        }
+
+        .section-number {
+            font-family: Arial, sans-serif;
+            font-size: .72rem;
+            color: var(--muted);
+            letter-spacing: .1em;
+        }
+
+        .intro {
+            max-width: 720px;
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        /* START */
+
+        .start-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+        }
+
+        .start-card {
+            padding: 26px;
+            min-height: 180px;
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--olive);
+            transition: .2s ease;
+        }
+
+        .start-card:nth-child(2) { border-top-color: var(--burgundy); }
+        .start-card:nth-child(3) { border-top-color: var(--navy); }
+        .start-card:nth-child(4) { border-top-color: var(--brown); }
+        .start-card:nth-child(5) { border-top-color: var(--olive); }
+        .start-card:nth-child(6) { border-top-color: var(--burgundy); }
+
+        .start-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(55,48,39,.08);
+        }
+
+        .number {
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            color: var(--muted);
+        }
+
+        .start-card h3 {
+            font-size: 1.35rem;
+            font-weight: normal;
+            margin: 20px 0 8px;
+        }
+
+        .start-card p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        /* GENRES */
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+        }
+
+        .genre {
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            padding: 26px;
+            min-height: 230px;
+        }
+
+        .genre h3 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-bottom: 9px;
+        }
+
+        .genre p {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .genre-meta {
+            margin-top: 18px;
+            font-family: Arial, sans-serif;
+            font-size: .63rem;
+            color: var(--olive);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        /* ALBUMS */
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+        }
+
+        .album {
+            padding: 25px;
+            border: 1px solid var(--border);
+            background: var(--paper-light);
+        }
+
+        .album h3 {
+            font-size: 1.3rem;
+            font-weight: normal;
+        }
+
+        .artist {
+            color: var(--olive);
+            margin-bottom: 15px;
+            font-size: .9rem;
+        }
+
+        .album p {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .rating {
+            margin-top: 18px;
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+            letter-spacing: .1em;
+            color: var(--muted);
+        }
+
+        /* JOURNAL */
+
+        .journal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .journal-box {
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+
+        .journal-box h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .journal-box p {
+            color: var(--muted);
+            font-size: .88rem;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 230px;
+            padding: 15px;
+            resize: vertical;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            color: var(--ink);
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: var(--olive);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        button:hover {
+            border-color: var(--olive);
+            background: var(--paper-dark);
+        }
+
+        .saved {
+            font-family: Arial, sans-serif;
+            font-size: .65rem;
+            color: var(--olive);
+            margin-left: 10px;
+        }
+
+        /* PLAYLIST */
+
+        .playlist {
+            border: 1px solid var(--border);
+            background: var(--olive-light);
+            padding: 30px;
+        }
+
+        .playlist h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .playlist p {
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .playlist-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .playlist-item {
+            background: var(--paper-light);
+            border: 1px solid var(--border);
+            padding: 13px 16px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        @media(max-width:850px) {
+            .start-grid,
+            .genre-grid,
+            .album-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:650px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            main {
+                padding: 50px 18px 70px;
+            }
+
+            .start-grid,
+            .genre-grid,
+            .album-grid,
+            .journal {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-number {
+                display: block;
+                margin-top: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="nav">
+        <a href="index.html" class="logo">The Commonplace</a>
+
+        <ul class="nav-links">
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="politics.html">Politics</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="eyebrow">03 — Music</div>
+
+    <h1>Music</h1>
+
+    <p>
+        A personal archive for listening: artists, albums, genres,
+        discoveries, reviews, playlists, and the music that becomes
+        attached to particular moments.
+    </p>
+</section>
+
+
+<section id="start">
+
+    <div class="section-heading">
+        <h2>Start here</h2>
+        <span class="section-number">LISTEN WITH INTENTION</span>
+    </div>
+
+    <div class="start-grid">
+
+        <a href="#genres" class="start-card">
+            <span class="number">01</span>
+            <h3>Explore genres</h3>
+            <p>
+                Learn where different musical traditions came from and how they developed.
+            </p>
+        </a>
+
+        <a href="#artists" class="start-card">
+            <span class="number">02</span>
+            <h3>Discover artists</h3>
+            <p>
+                Keep track of artists you love, artists you're studying, and artists you want to explore.
+            </p>
+        </a>
+
+        <a href="#albums" class="start-card">
+            <span class="number">03</span>
+            <h3>Album library</h3>
+            <p>
+                Record albums you've heard and what you thought about them.
+            </p>
+        </a>
+
+        <a href="#journal" class="start-card">
+            <span class="number">04</span>
+            <h3>Listening journal</h3>
+            <p>
+                Write down reactions, observations, favorite moments, and questions.
+            </p>
+        </a>
+
+        <a href="#playlist" class="start-card">
+            <span class="number">05</span>
+            <h3>Build playlists</h3>
+            <p>
+                Create themed collections based on moods, ideas, eras, or memories.
+            </p>
+        </a>
+
+        <a href="notes.html" class="start-card">
+            <span class="number">06</span>
+            <h3>Take notes</h3>
+            <p>
+                Connect music research and listening observations to your larger notebook.
+            </p>
+        </a>
+
+    </div>
+</section>
+
+
+<section id="genres">
+
+    <div class="section-heading">
+        <h2>Genres</h2>
+        <span class="section-number">MUSICAL FAMILIES</span>
+    </div>
+
+    <div class="genre-grid">
+
+        <article class="genre">
+            <h3>Rock</h3>
+            <p>
+                A broad family of popular music rooted in earlier traditions
+                including rhythm and blues, country, and rock and roll.
+            </p>
+            <div class="genre-meta">Electric · Guitar · Band</div>
+        </article>
+
+        <article class="genre">
+            <h3>Jazz</h3>
+            <p>
+                A diverse tradition strongly associated with improvisation,
+                rhythmic complexity, blues traditions, and evolving ensemble forms.
+            </p>
+            <div class="genre-meta">Improvisation · Swing · Harmony</div>
+        </article>
+
+        <article class="genre">
+            <h3>Hip-Hop</h3>
+            <p>
+                A cultural and musical movement encompassing rap, DJing,
+                sampling, breakdancing, graffiti, and diverse regional traditions.
+            </p>
+            <div class="genre-meta">Rap · Sampling · Rhythm</div>
+        </article>
+
+        <article class="genre">
+            <h3>Electronic</h3>
+            <p>
+                Music involving electronic technologies for sound creation,
+                processing, sequencing, performance, or production.
+            </p>
+            <div class="genre-meta">Synthesis · Production · Texture</div>
+        </article>
+
+        <article class="genre">
+            <h3>Classical</h3>
+            <p>
+                A broad category covering multiple traditions of composed
+                Western art music across centuries.
+            </p>
+            <div class="genre-meta">Composition · Orchestra · Form</div>
+        </article>
+
+        <article class="genre">
+            <h3>Folk</h3>
+            <p>
+                Music connected to cultural traditions, communities,
+                storytelling, oral transmission, and evolving popular forms.
+            </p>
+            <div class="genre-meta">Tradition · Storytelling · Culture</div>
+        </article>
+
+    </div>
+</section>
+
+
+<section id="artists">
+
+    <div class="section-heading">
+        <h2>Artist archive</h2>
+        <span class="section-number">PEOPLE BEHIND THE MUSIC</span>
+    </div>
+
+    <p class="intro">
+        Eventually this can become your personal music database.
+        For now, use it as a place to keep artists you want to understand,
+        not just artists you already listen to.
+    </p>
+
+    <div class="album-grid">
+
+        <article class="album">
+            <h3>Artist to explore</h3>
+            <div class="artist">Add an artist here</div>
+            <p>
+                What interests you about them? Their sound? Their history?
+                Their influence? Their songwriting?
+            </p>
+        </article>
+
+        <article class="album">
+            <h3>Artist to explore</h3>
+            <div class="artist">Add an artist here</div>
+            <p>
+                Keep track of artists you encounter through albums,
+                recommendations, films, games, or other sources.
+            </p>
+        </article>
+
+        <article class="album">
+            <h3>Artist to explore</h3>
+            <div class="artist">Add an artist here</div>
+            <p>
+                Use this section as a temporary list until we build
+                the full interactive artist library.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+
+<section id="albums">
+
+    <div class="section-heading">
+        <h2>Album library</h2>
+        <span class="section-number">WHAT HAVE YOU HEARD?</span>
+    </div>
+
+    <div class="album-grid">
+
+        <article class="album">
+            <h3>Album title</h3>
+            <div class="artist">Artist</div>
+            <p>
+                First impressions, favorite tracks, production,
+                lyrics, themes, historical context, or anything else.
+            </p>
+            <div class="rating">Rating: — / 10</div>
+        </article>
+
+        <article class="album">
+            <h3>Album title</h3>
+            <div class="artist">Artist</div>
+            <p>
+                What makes this album interesting or worth returning to?
+            </p>
+            <div class="rating">Rating: — / 10</div>
+        </article>
+
+        <article class="album">
+            <h3>Album title</h3>
+            <div class="artist">Artist</div>
+            <p>
+                Keep a record of discoveries and revisit them later.
+            </p>
+            <div class="rating">Rating: — / 10</div>
+        </article>
+
+    </div>
+</section>
+
+
+<section id="journal">
+
+    <div class="section-heading">
+        <h2>Listening journal</h2>
+        <span class="section-number">PAY ATTENTION</span>
+    </div>
+
+    <div class="journal">
+
+        <div class="journal-box">
+
+            <h3>What am I listening to?</h3>
+
+            <p>
+                Record whatever you're currently listening to and what
+                you're noticing about it.
+            </p>
+
+            <textarea id="musicNotes"
+                placeholder="Artist, album, song, thoughts..."></textarea>
+
+            <button onclick="saveMusic()">
+                Save journal
+            </button>
+
+            <span class="saved" id="musicSaved"></span>
+
+        </div>
+
+
+        <div class="journal-box">
+
+            <h3>Music questions</h3>
+
+            <p>
+                Music can raise historical, cultural, philosophical,
+                and personal questions.
+            </p>
+
+            <textarea id="musicQuestions"
+                placeholder="Why does this sound work? Where did this genre come from? What does this song make me think about?"></textarea>
+
+            <button onclick="saveMusicQuestions()">
+                Save questions
+            </button>
+
+            <span class="saved" id="questionsSaved"></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="playlist">
+
+    <div class="section-heading">
+        <h2>Playlist ideas</h2>
+        <span class="section-number">CURATED COLLECTIONS</span>
+    </div>
+
+    <div class="playlist">
+
+        <h3>Build playlists around ideas</h3>
+
+        <p>
+            A playlist doesn't have to be organized only around genre.
+            Try organizing music around a concept, story, place, era,
+            character, philosophical idea, or mood.
+        </p>
+
+        <div class="playlist-list">
+
+            <div class="playlist-item">
+                A playlist for reading philosophy
+            </div>
+
+            <div class="playlist-item">
+                Songs that feel like a particular historical era
+            </div>
+
+            <div class="playlist-item">
+                Music discovered through films or anime
+            </div>
+
+            <div class="playlist-item">
+                Albums that changed how you think about music
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    The Commonplace · Music
+</footer>
+
+
+<script>
+
+function saveMusic() {
+
+    const text = document.getElementById("musicNotes").value;
+
+    localStorage.setItem(
+        "commonplaceMusicJournal",
+        text
+    );
+
+    document.getElementById("musicSaved").textContent =
+        "Saved locally.";
+}
+
+
+function saveMusicQuestions() {
+
+    const text =
+        document.getElementById("musicQuestions").value;
+
+    localStorage.setItem(
+        "commonplaceMusicQuestions",
+        text
+    );
+
+    document.getElementById("questionsSaved").textContent =
+        "Saved locally.";
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const journal =
+        localStorage.getItem("commonplaceMusicJournal");
+
+    const questions =
+        localStorage.getItem("commonplaceMusicQuestions");
+
+
+    if (journal) {
+        document.getElementById("musicNotes").value = journal;
+    }
+
+    if (questions) {
+        document.getElementById("musicQuestions").value = questions;
+    }
+
+});
+
+</script>
+
+</body>
+</html>
