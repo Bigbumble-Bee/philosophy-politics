@@ -11,833 +11,419 @@
     <style>
 
         /* =========================================
-           MUSIC — VINTAGE RECORD ROOM
-           ========================================= */
-
-        :root {
-            --music-paper: #eee0c2;
-            --music-paper-dark: #dfcda9;
-            --music-ink: #302820;
-            --music-muted: #766957;
-            --music-burgundy: #713d3a;
-            --music-line: rgba(67, 50, 35, .28);
-            --music-card: rgba(255, 249, 232, .60);
-        }
-
-
-        /* =========================================
-           PAGE BACKGROUND
-           ========================================= */
-
-        body {
-            background:
-                linear-gradient(
-                    rgba(238,224,194,.84),
-                    rgba(238,224,194,.84)
-                ),
-                url("music-doodles.png")
-                center top / 1100px auto
-                repeat-y;
-
-            background-color: var(--music-paper);
-            color: var(--music-ink);
-        }
-
-
-        /* =========================================
-           HEADER
-           ========================================= */
-
-        .commonplace-header {
-            position: relative;
-            z-index: 10;
-        }
-
-
-        /* =========================================
-           MAIN CONTAINER
+           MUSIC PAGE
            ========================================= */
 
         .music-page {
-            max-width: 1180px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px 80px;
+            padding: 40px 24px 90px;
         }
 
-
-        /* =========================================
-           HERO
-           ========================================= */
+        /* HERO */
 
         .music-hero {
-            position: relative;
-
-            min-height: 390px;
-
-            margin: 0 -24px;
-            padding: 65px 35px 55px;
-
-            box-sizing: border-box;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            overflow: hidden;
-
-            border-bottom:
-                1px solid var(--music-line);
-
-            background:
-                linear-gradient(
-                    rgba(224,202,160,.48),
-                    rgba(224,202,160,.48)
-                ),
-                url("music-doodles.png")
-                center 40% / cover
-                no-repeat;
+            padding: 55px 0 60px;
+            border-bottom: 1px solid var(--border);
         }
 
-
-        .music-hero::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle,
-                    transparent 45%,
-                    rgba(73,48,27,.13)
-                );
-
-            pointer-events: none;
-        }
-
-
-        .music-hero-inner {
-            position: relative;
-            z-index: 2;
-
-            max-width: 720px;
-        }
-
-
-        .music-eyebrow,
-        .music-label {
+        .eyebrow {
             font-family: Arial, sans-serif;
-
-            font-size: .66rem;
-
+            font-size: .68rem;
             letter-spacing: .18em;
-
-            color: var(--music-burgundy);
+            color: var(--burgundy);
+            margin-bottom: 18px;
         }
-
-
-        .music-eyebrow {
-            margin-bottom: 15px;
-        }
-
 
         .music-hero h1 {
-            margin: 0 0 15px;
-
-            font-size:
-                clamp(4rem, 10vw, 7rem);
-
-            line-height: .86;
-
+            margin: 0 0 25px;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            line-height: .9;
             font-weight: normal;
-
-            color: var(--music-ink);
         }
-
 
         .music-hero p {
-            margin: 0;
-
-            font-size: 1.15rem;
-
-            font-style: italic;
-
-            color: var(--music-muted);
-        }
-
-
-        .music-rule {
-            width: 130px;
-            height: 1px;
-
-            margin: 25px auto 0;
-
-            background:
-                var(--music-burgundy);
-
-            position: relative;
-        }
-
-
-        .music-rule::after {
-            content: "♪";
-
-            position: absolute;
-
-            left: 50%;
-            top: -15px;
-
-            transform:
-                translateX(-50%);
-
-            background:
-                var(--music-paper-dark);
-
-            padding: 0 9px;
-
-            color:
-                var(--music-burgundy);
-
-            font-size: 18px;
-        }
-
-
-        /* =========================================
-           SECTIONS
-           ========================================= */
-
-        .music-section {
-            margin: 65px 0;
-        }
-
-
-        .music-section h2 {
-            margin: 7px 0 10px;
-
-            font-size: 2.15rem;
-
-            font-weight: normal;
-        }
-
-
-        .music-intro {
             max-width: 720px;
-
-            color:
-                var(--music-muted);
-
-            line-height: 1.75;
-
-            margin-bottom: 28px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
-
-        /* =========================================
-           SEARCH
-           ========================================= */
-
-        .music-search {
-            width: 100%;
-
-            box-sizing: border-box;
-
-            padding: 14px 16px;
-
-            border:
-                1px solid var(--music-line);
-
-            background:
-                rgba(255,249,232,.55);
-
-            color:
-                var(--music-ink);
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 1rem;
-        }
-
-
-        .music-search:focus {
-            outline:
-                1px solid var(--music-burgundy);
-        }
-
-
-        .search-empty {
-            display: none;
-
-            margin-top: 15px;
-
-            color:
-                var(--music-muted);
-
-            font-style: italic;
-        }
-
-
-        /* =========================================
-           GENERAL CARDS
-           ========================================= */
-
-        .music-card {
-            border:
-                1px solid var(--music-line);
-
-            background:
-                var(--music-card);
-
-            padding: 24px;
-
-            box-sizing: border-box;
-        }
-
-
-        .music-card h3 {
-            margin: 0 0 9px;
-
-            font-size: 1.35rem;
-
-            font-weight: normal;
-        }
-
-
-        .music-card p {
-            color:
-                var(--music-muted);
-
-            line-height: 1.65;
-        }
-
-
-        /* =========================================
-           BUTTONS
-           ========================================= */
-
-        .music-button {
-            display: inline-block;
-
-            margin-top: 14px;
-
-            padding: 10px 15px;
-
-            border:
-                1px solid var(--music-ink);
-
-            color:
-                var(--music-ink) !important;
-
-            text-decoration:
-                none !important;
-
-            font-family:
-                Arial, sans-serif;
-
-            font-size: .65rem;
-
-            letter-spacing: .08em;
-
-            text-transform: uppercase;
-
-            background:
-                transparent;
-
-            cursor: pointer;
-        }
-
-
-        .music-button:hover {
-            background:
-                var(--music-ink);
-
-            color:
-                var(--music-paper) !important;
-        }
-
-
-        /* =========================================
-           SPOTIFY LISTENING ROOM
-           ========================================= */
-
-        .listening-room {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 18px;
-
-            align-items: stretch;
-        }
-
-
-        .spotify-box {
-            border:
-                1px solid var(--music-line);
-
-            background:
-                rgba(32,29,25,.95);
-
-            padding: 14px;
-
-            min-height: 350px;
-        }
-
-
-        .spotify-box iframe {
-            width: 100%;
-
-            min-height: 352px;
-
-            border: 0;
-
-            border-radius: 8px;
-        }
-
-
-        .spotify-instructions {
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-        }
-
-
-        .spotify-instructions h3 {
-            font-size: 1.7rem;
-
-            font-weight: normal;
-
-            margin: 0 0 12px;
-        }
-
-
-        .spotify-instructions p {
-            color:
-                var(--music-muted);
-
+        .hero-question {
+            margin-top: 35px;
+            padding-left: 20px;
+            border-left: 2px solid var(--burgundy);
+            font-size: 1.15rem;
             line-height: 1.7;
         }
 
+        /* SECTIONS */
 
-        .spotify-note {
-            margin-top: 18px;
-
-            padding: 15px;
-
-            border-left:
-                2px solid var(--music-burgundy);
-
-            color:
-                var(--music-muted);
-
-            font-size: .9rem;
-
-            line-height: 1.6;
+        .music-section {
+            margin: 80px 0;
         }
 
+        .section-label {
+            font-family: Arial, sans-serif;
+            font-size: .66rem;
+            letter-spacing: .16em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
 
-        /* =========================================
-           ALBUMS
-           ========================================= */
+        .music-section h2 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+        .section-intro {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 32px;
+        }
+
+        /* SEARCH */
+
+        .music-search {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.35);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .music-search:focus {
+            outline: 1px solid var(--burgundy);
+        }
+
+        /* LISTENING ROOM */
+
+        .listening-room {
+            border: 1px solid var(--border);
+            padding: 30px;
+            background: rgba(255,255,255,.18);
+        }
+
+        .listening-room h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+        .listening-room p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .spotify-placeholder {
+            margin-top: 25px;
+            width: 100%;
+            min-height: 152px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 25px;
+        }
+
+        .spotify-placeholder p {
+            margin: 0;
+        }
+
+        .spotify-placeholder a {
+            color: var(--burgundy);
+        }
+
+        .spotify-embed {
+            width: 100%;
+            height: 352px;
+            border: 0;
+            margin-top: 25px;
+        }
+
+        /* ALBUMS */
 
         .album-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 14px;
         }
 
-
         .album-card {
-            padding: 0;
-
-            overflow: hidden;
+            border: 1px solid var(--border);
+            padding: 25px;
+            background: rgba(255,255,255,.18);
         }
 
-
-        .album-cover {
-            aspect-ratio: 1;
-
-            background:
-                var(--music-paper-dark);
-
-            display: grid;
-
-            place-items: center;
-
-            border-bottom:
-                1px solid var(--music-line);
-
-            font-size: 3rem;
-
-            color:
-                var(--music-burgundy);
+        .album-year {
+            font-family: Arial, sans-serif;
+            font-size: .63rem;
+            letter-spacing: .1em;
+            color: var(--muted);
+            margin-bottom: 12px;
         }
 
-
-        .album-info {
-            padding: 18px;
+        .album-card h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin: 0 0 6px;
         }
-
-
-        .album-info h3 {
-            margin-bottom: 5px;
-        }
-
 
         .album-artist {
-            color:
-                var(--music-burgundy);
-
-            font-family:
-                Arial, sans-serif;
-
-            font-size: .67rem;
-
-            letter-spacing: .08em;
-
-            text-transform: uppercase;
+            color: var(--burgundy);
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+            letter-spacing: .07em;
+            margin-bottom: 18px;
         }
 
+        .album-card p {
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
 
-        /* =========================================
-           ARTISTS
-           ========================================= */
+        /* ARTISTS */
 
         .artist-list {
             display: grid;
-
-            gap: 0;
-
-            border-top:
-                1px solid var(--music-line);
+            gap: 12px;
         }
 
-
-        .artist-row {
-            display: grid;
-
-            grid-template-columns:
-                55px 1fr auto;
-
-            gap: 15px;
-
-            align-items: center;
-
-            padding: 14px 0;
-
-            border-bottom:
-                1px solid var(--music-line);
+        .artist {
+            border: 1px solid var(--border);
+            padding: 25px;
         }
 
-
-        .artist-mark {
-            width: 45px;
-            height: 45px;
-
-            border:
-                1px solid var(--music-line);
-
-            border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
-
-            background:
-                var(--music-paper-dark);
-
-            font-size: 1.15rem;
-        }
-
-
-        .artist-name {
-            font-size: 1.1rem;
-        }
-
-
-        .artist-genre {
-            color:
-                var(--music-muted);
-
-            font-size: .85rem;
-        }
-
-
-        /* =========================================
-           MUSIC HISTORY
-           ========================================= */
-
-        .music-timeline {
-            position: relative;
-
-            border-left:
-                1px solid var(--music-line);
-
-            padding-left: 28px;
-
-            margin-top: 30px;
-        }
-
-
-        .music-era {
-            position: relative;
-
-            margin-bottom: 35px;
-        }
-
-
-        .music-era::before {
-            content: "";
-
-            position: absolute;
-
-            left: -33px;
-            top: 5px;
-
-            width: 8px;
-            height: 8px;
-
-            border:
-                1px solid var(--music-burgundy);
-
-            background:
-                var(--music-paper);
-
-            border-radius: 50%;
-        }
-
-
-        .era-date {
-            font-family:
-                Arial, sans-serif;
-
-            color:
-                var(--music-burgundy);
-
-            font-size: .65rem;
-
-            letter-spacing: .12em;
-
-            margin-bottom: 7px;
-        }
-
-
-        .music-era h3 {
-            margin: 0 0 6px;
-
-            font-size: 1.35rem;
-
+        .artist h3 {
+            font-size: 1.7rem;
             font-weight: normal;
+            margin: 0 0 6px;
         }
 
+        .artist-type {
+            color: var(--burgundy);
+            font-family: Arial, sans-serif;
+            font-size: .66rem;
+            letter-spacing: .08em;
+            margin-bottom: 15px;
+        }
 
-        .music-era p {
-            margin: 0;
-
+        .artist p {
+            color: var(--muted);
+            line-height: 1.7;
             max-width: 720px;
-
-            color:
-                var(--music-muted);
-
-            line-height: 1.65;
         }
 
+        /* BUTTONS */
 
-        /* =========================================
-           GENRES
-           ========================================= */
-
-        .genre-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 10px;
+        .music-button {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            color: var(--ink) !important;
+            text-decoration: none !important;
+            font-family: Arial, sans-serif;
+            font-size: .66rem;
+            letter-spacing: .05em;
         }
 
-
-        .genre {
-            border:
-                1px solid var(--music-line);
-
-            padding: 18px;
-
-            background:
-                rgba(255,249,232,.3);
-
-            text-decoration:
-                none;
-
-            color:
-                var(--music-ink);
+        .music-button:hover {
+            background: var(--ink);
+            color: var(--cream) !important;
         }
 
+        /* HISTORY */
 
-        .genre:hover {
-            background:
-                rgba(255,249,232,.7);
+        .history {
+            position: relative;
+            margin-top: 35px;
+            padding-left: 30px;
+            border-left: 1px solid var(--border);
         }
 
+        .history-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
 
-        .genre-symbol {
-            display: block;
+        .history-item::before {
+            content: "";
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            border: 1px solid var(--ink);
+            background: var(--cream);
+        }
 
-            color:
-                var(--music-burgundy);
-
-            font-size: 1.3rem;
-
+        .history-date {
+            font-family: Arial, sans-serif;
+            font-size: .67rem;
+            letter-spacing: .12em;
+            color: var(--burgundy);
             margin-bottom: 8px;
         }
 
+        .history-item h3 {
+            font-size: 1.45rem;
+            font-weight: normal;
+            margin: 0 0 8px;
+        }
 
-        .genre-name {
+        .history-item p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0;
+        }
+
+        /* GENRES */
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .genre-card {
+            border: 1px solid var(--border);
+            padding: 22px;
+        }
+
+        .genre-card h3 {
+            font-size: 1.25rem;
+            font-weight: normal;
+            margin: 0 0 8px;
+        }
+
+        .genre-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: .88rem;
+            margin: 0;
+        }
+
+        .genre-origin {
+            font-family: Arial, sans-serif;
+            font-size: .62rem;
+            letter-spacing: .08em;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        /* MUSIC NOTES */
+
+        .music-notes {
+            border: 1px solid var(--border);
+            padding: 30px;
+            background: rgba(255,255,255,.18);
+        }
+
+        .music-notes h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+        .music-notes p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .music-notes form {
+            margin-top: 25px;
+        }
+
+        .music-notes input,
+        .music-notes textarea,
+        .music-notes select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.4);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
             font-size: 1rem;
         }
 
-
-        /* =========================================
-           NOTES
-           ========================================= */
-
-        .music-notes {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 18px;
-        }
-
-
-        .note-form input,
-        .note-form textarea,
-        .note-form select {
-
-            width: 100%;
-
-            box-sizing: border-box;
-
-            margin-top: 8px;
-
-            margin-bottom: 14px;
-
-            padding: 12px;
-
-            border:
-                1px solid var(--music-line);
-
-            background:
-                rgba(255,249,232,.55);
-
-            color:
-                var(--music-ink);
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-        }
-
-
-        .note-form textarea {
+        .music-notes textarea {
             min-height: 130px;
-
             resize: vertical;
         }
 
-
-        .note-form label {
-            font-family:
-                Arial, sans-serif;
-
-            font-size: .63rem;
-
-            letter-spacing: .1em;
-
-            color:
-                var(--music-muted);
+        .music-notes input:focus,
+        .music-notes textarea:focus,
+        .music-notes select:focus {
+            outline: 1px solid var(--burgundy);
         }
 
-
-        .note-status {
-            margin-top: 12px;
-
-            color:
-                var(--music-burgundy);
-
-            font-size: .85rem;
+        .music-notes button {
+            padding: 11px 17px;
+            border: 1px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
         }
 
+        .music-notes button:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
 
-        /* =========================================
-           MOBILE
-           ========================================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
 
-            .listening-room,
-            .music-notes {
-                grid-template-columns: 1fr;
-            }
-
-
             .album-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
-
 
             .genre-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
 
         }
-
 
         @media (max-width: 600px) {
 
             .music-page {
-                padding:
-                    0 16px 60px;
+                padding: 25px 16px 60px;
             }
-
 
             .music-hero {
-                margin: 0 -16px;
-
-                padding:
-                    55px 20px 45px;
+                padding-top: 30px;
             }
-
 
             .album-grid,
             .genre-grid {
                 grid-template-columns: 1fr;
             }
 
-
-            .artist-row {
-                grid-template-columns:
-                    45px 1fr;
+            .music-section {
+                margin: 60px 0;
             }
 
-
-            .artist-row .music-button {
-                grid-column: 2;
-                justify-self: start;
+            .listening-room,
+            .music-notes {
+                padding: 22px;
             }
 
         }
@@ -848,39 +434,17 @@
 
 <body>
 
-
-<!-- =========================================
-     HEADER
-     ========================================= -->
-
 <header class="commonplace-header">
 
-    <a
-        href="index.html"
-        class="commonplace-logo"
-    >
+    <a href="index.html" class="commonplace-logo">
         The Commonplace
     </a>
 
-
     <nav class="commonplace-nav">
-
-        <a href="philosophy.html">
-            Philosophy
-        </a>
-
-        <a href="politics.html">
-            Politics
-        </a>
-
-        <a href="music.html">
-            Music
-        </a>
-
-        <a href="notes.html">
-            Notes
-        </a>
-
+        <a href="philosophy.html">Philosophy</a>
+        <a href="politics.html">Politics</a>
+        <a href="music.html">Music</a>
+        <a href="notes.html">Notes</a>
     </nav>
 
 </header>
@@ -889,16 +453,14 @@
 <main class="music-page">
 
 
-<!-- =========================================
-     HERO
-     ========================================= -->
+    <!-- =====================================
+         HERO
+         ===================================== -->
 
-<section class="music-hero">
+    <section class="music-hero">
 
-    <div class="music-hero-inner">
-
-        <div class="music-eyebrow">
-            03 — MUSIC
+        <div class="eyebrow">
+            01 — MUSIC
         </div>
 
         <h1>
@@ -906,829 +468,907 @@
         </h1>
 
         <p>
-            Records, songs, sounds, and the stories behind them.
+            Music is more than something we listen to. It carries
+            history, identity, memory, politics, technology, culture,
+            and emotion. This is a place to explore the sounds,
+            people, movements, and ideas behind the music.
         </p>
 
-        <div class="music-rule"></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SEARCH
-     ========================================= -->
-
-<section class="music-section">
-
-    <div class="music-label">
-        THE LISTENING LIBRARY
-    </div>
-
-    <h2>
-        Find something to listen to.
-    </h2>
-
-    <p class="music-intro">
-        Search the music archive by artist, album, genre,
-        era, or idea.
-    </p>
-
-    <input
-        id="musicSearch"
-        class="music-search"
-        type="search"
-        placeholder="Search the music archive..."
-        oninput="searchMusic()"
-    >
-
-    <div
-        id="searchEmpty"
-        class="search-empty"
-    >
-        Nothing here matches that search.
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SPOTIFY
-     ========================================= -->
-
-<section
-    class="music-section"
-    id="listening-room"
->
-
-    <div class="music-label">
-        THE LISTENING ROOM
-    </div>
-
-    <h2>
-        Listen on Spotify
-    </h2>
-
-    <p class="music-intro">
-        Put your playlists, albums, or favorite records here.
-    </p>
-
-
-    <div class="listening-room">
-
-
-        <div class="spotify-box">
-
-            <!--
-                REPLACE THE EMBED URL BELOW
-                WITH YOUR SPOTIFY PLAYLIST EMBED.
-            -->
-
-            <iframe
-                src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_ID"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-            >
-            </iframe>
-
+        <div class="hero-question">
+            What can music tell us about the people and cultures
+            that created it?
         </div>
 
+    </section>
 
-        <div class="music-card spotify-instructions">
+
+    <!-- =====================================
+         SEARCH
+         ===================================== -->
+
+    <section class="music-section">
+
+        <div class="section-label">
+            EXPLORE
+        </div>
+
+        <h2>
+            Start anywhere.
+        </h2>
+
+        <p class="section-intro">
+            Search this page for artists, albums, genres, historical
+            periods, or musical ideas.
+        </p>
+
+        <input
+            class="music-search"
+            id="musicSearch"
+            type="search"
+            placeholder="Search music..."
+            oninput="searchMusic()"
+        >
+
+    </section>
+
+
+    <!-- =====================================
+         LISTENING ROOM
+         ===================================== -->
+
+    <section
+        class="music-section"
+        id="listening"
+    >
+
+        <div class="section-label">
+            02 — LISTEN
+        </div>
+
+        <h2>
+            The listening room
+        </h2>
+
+        <p class="section-intro">
+            Keep a soundtrack alongside your research. Use the
+            listening room for playlists connected to what you are
+            studying, reading, or simply enjoying.
+        </p>
+
+
+        <div class="listening-room">
 
             <h3>
-                Your listening room
+                Your Spotify library
             </h3>
 
             <p>
-                This is the place for the music you're currently
-                listening to, studying, collecting, or simply
-                returning to.
+                Add a Spotify playlist below to turn this section
+                into your personal listening space.
             </p>
 
-            <div class="spotify-note">
-                Spotify can be embedded directly into this page.
-                You only need to replace the playlist ID in the
-                iframe above.
-            </div>
 
-            <a
-                class="music-button"
-                href="https://open.spotify.com/"
-                target="_blank"
-                rel="noopener"
+            <!--
+                Replace YOUR_PLAYLIST_ID with the ID from your
+                Spotify playlist.
+
+                Example:
+                https://open.spotify.com/playlist/37i9dQZF...
+            -->
+
+            <div
+                class="spotify-placeholder"
+                id="spotifyPlaceholder"
             >
-                Open Spotify →
-            </a>
+
+                <p>
+                    Add your Spotify playlist ID in the code to
+                    display your playlist here.
+                </p>
+
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================================
-     ALBUMS
-     ========================================= -->
+    <!-- =====================================
+         ALBUMS
+         ===================================== -->
 
-<section
-    class="music-section"
-    id="albums"
->
+    <section
+        class="music-section"
+        id="albums"
+    >
 
-    <div class="music-label">
-        RECORD COLLECTION
-    </div>
+        <div class="section-label">
+            03 — ALBUMS
+        </div>
 
-    <h2>
-        Albums & records
-    </h2>
+        <h2>
+            Albums worth exploring
+        </h2>
 
-    <p class="music-intro">
-        A growing collection of albums worth remembering.
-    </p>
+        <p class="section-intro">
+            Albums can be studied as complete works: their sound,
+            sequencing, production, cultural context, and the ideas
+            their creators were exploring.
+        </p>
 
 
-    <div class="album-grid">
+        <div class="album-grid">
 
 
-        <article class="music-card album-card searchable-music">
+            <article class="album-card searchable">
 
-            <div class="album-cover">
-                ◉
-            </div>
-
-            <div class="album-info">
-
-                <div class="album-artist">
-                    Add an artist
+                <div class="album-year">
+                    1967
                 </div>
 
                 <h3>
-                    Your first record
+                    Are You Experienced
                 </h3>
 
+                <div class="album-artist">
+                    JIMI HENDRIX
+                </div>
+
                 <p>
-                    Add an album here when you find one
-                    worth keeping in the archive.
+                    A landmark psychedelic rock album that helped
+                    redefine what an electric guitar could do in
+                    popular music.
                 </p>
 
                 <a
                     class="music-button"
-                    href="https://open.spotify.com/"
+                    href="https://open.spotify.com/search/Are%20You%20Experienced%20Jimi%20Hendrix"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
-                    Spotify →
+                    Listen
                 </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-        <article class="music-card album-card searchable-music">
+            <article class="album-card searchable">
 
-            <div class="album-cover">
-                ♫
-            </div>
-
-            <div class="album-info">
-
-                <div class="album-artist">
-                    Add an artist
+                <div class="album-year">
+                    1971
                 </div>
 
                 <h3>
-                    Another record
+                    What's Going On
                 </h3>
 
+                <div class="album-artist">
+                    MARVIN GAYE
+                </div>
+
                 <p>
-                    Keep notes about why this album matters
-                    to you.
+                    An album connecting soul music with questions
+                    about war, social conditions, environmental
+                    concerns, and human relationships.
                 </p>
 
                 <a
                     class="music-button"
-                    href="https://open.spotify.com/"
+                    href="https://open.spotify.com/search/What%27s%20Going%20On%20Marvin%20Gaye"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
-                    Spotify →
+                    Listen
                 </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-        <article class="music-card album-card searchable-music">
+            <article class="album-card searchable">
 
-            <div class="album-cover">
-                ♪
-            </div>
-
-            <div class="album-info">
-
-                <div class="album-artist">
-                    Add an artist
+                <div class="album-year">
+                    1982
                 </div>
 
                 <h3>
-                    A record to revisit
+                    Thriller
                 </h3>
 
+                <div class="album-artist">
+                    MICHAEL JACKSON
+                </div>
+
                 <p>
-                    Use this space for albums you want
-                    to return to.
+                    A major commercial and cultural landmark whose
+                    production, visual presentation, and genre
+                    crossover influenced popular music for decades.
                 </p>
 
                 <a
                     class="music-button"
-                    href="https://open.spotify.com/"
+                    href="https://open.spotify.com/search/Thriller%20Michael%20Jackson"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
-                    Spotify →
+                    Listen
                 </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-    </div>
+            <article class="album-card searchable">
 
-</section>
-
-
-<!-- =========================================
-     ARTISTS
-     ========================================= -->
-
-<section
-    class="music-section"
-    id="artists"
->
-
-    <div class="music-label">
-        ARTISTS
-    </div>
-
-    <h2>
-        Artists
-    </h2>
-
-    <p class="music-intro">
-        Keep track of artists whose work you want to explore.
-    </p>
-
-
-    <div class="artist-list">
-
-
-        <article class="artist-row searchable-music">
-
-            <div class="artist-mark">
-                ♪
-            </div>
-
-            <div>
-
-                <div class="artist-name">
-                    Aretha Franklin
+                <div class="album-year">
+                    1994
                 </div>
 
-                <div class="artist-genre">
-                    Soul · R&B
+                <h3>
+                    Illmatic
+                </h3>
+
+                <div class="album-artist">
+                    NAS
                 </div>
 
-            </div>
+                <p>
+                    A highly influential hip-hop album known for
+                    detailed writing, sampling, production, and its
+                    portrayal of life in New York City.
+                </p>
 
-            <a
-                class="music-button"
-                href="https://open.spotify.com/search/Aretha%20Franklin"
-                target="_blank"
-                rel="noopener"
-            >
-                Spotify →
-            </a>
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/Illmatic%20Nas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Listen
+                </a>
 
-        </article>
+            </article>
 
 
-        <article class="artist-row searchable-music">
+            <article class="album-card searchable">
 
-            <div class="artist-mark">
-                ♫
-            </div>
-
-            <div>
-
-                <div class="artist-name">
-                    Kendrick Lamar
+                <div class="album-year">
+                    2015
                 </div>
 
-                <div class="artist-genre">
-                    Hip-Hop
+                <h3>
+                    To Pimp a Butterfly
+                </h3>
+
+                <div class="album-artist">
+                    KENDRICK LAMAR
                 </div>
 
-            </div>
+                <p>
+                    A conceptually ambitious album exploring race,
+                    identity, politics, fame, community, and
+                    self-understanding through jazz, funk, soul,
+                    and hip-hop.
+                </p>
 
-            <a
-                class="music-button"
-                href="https://open.spotify.com/search/Kendrick%20Lamar"
-                target="_blank"
-                rel="noopener"
-            >
-                Spotify →
-            </a>
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/To%20Pimp%20a%20Butterfly%20Kendrick%20Lamar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Listen
+                </a>
 
-        </article>
+            </article>
 
 
-        <article class="artist-row searchable-music">
+            <article class="album-card searchable">
 
-            <div class="artist-mark">
-                ♪
-            </div>
+                <div class="album-year">
+                    2022
+                </div>
 
-            <div>
+                <h3>
+                    SOS
+                </h3>
 
-                <div class="artist-name">
+                <div class="album-artist">
                     SZA
                 </div>
 
-                <div class="artist-genre">
-                    R&B
+                <p>
+                    A contemporary R&B album that moves between
+                    vulnerability, relationships, identity, confidence,
+                    and changing perspectives.
+                </p>
+
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/SOS%20SZA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Listen
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ARTISTS
+         ===================================== -->
+
+    <section
+        class="music-section"
+        id="artists"
+    >
+
+        <div class="section-label">
+            04 — ARTISTS
+        </div>
+
+        <h2>
+            Follow the artists
+        </h2>
+
+        <p class="section-intro">
+            An artist's work makes more sense when you understand
+            the musical traditions, historical circumstances, and
+            people that influenced it.
+        </p>
+
+
+        <div class="artist-list">
+
+
+            <article class="artist searchable">
+
+                <h3>
+                    Aretha Franklin
+                </h3>
+
+                <div class="artist-type">
+                    SOUL · R&B · GOSPEL
                 </div>
 
-            </div>
+                <p>
+                    A foundational voice in American soul music whose
+                    work connected gospel traditions, R&B, popular
+                    music, and the broader history of Black American
+                    musical expression.
+                </p>
 
-            <a
-                class="music-button"
-                href="https://open.spotify.com/search/SZA"
-                target="_blank"
-                rel="noopener"
-            >
-                Spotify →
-            </a>
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/Aretha%20Franklin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore on Spotify
+                </a>
 
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     MUSIC HISTORY
-     ========================================= -->
-
-<section
-    class="music-section"
-    id="history"
->
-
-    <div class="music-label">
-        MUSIC HISTORY
-    </div>
-
-    <h2>
-        A timeline of sound
-    </h2>
-
-    <p class="music-intro">
-        Recording technology, social change, migration,
-        politics, and culture all changed the way music was
-        made and heard.
-    </p>
+            </article>
 
 
-    <div class="music-timeline">
+            <article class="artist searchable">
+
+                <h3>
+                    Kendrick Lamar
+                </h3>
+
+                <div class="artist-type">
+                    HIP-HOP · RAP · CONTEMPORARY MUSIC
+                </div>
+
+                <p>
+                    Known for narrative songwriting and albums that
+                    examine identity, race, politics, community,
+                    personal conflict, and American life.
+                </p>
+
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/Kendrick%20Lamar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore on Spotify
+                </a>
+
+            </article>
 
 
-        <article class="music-era searchable-music">
+            <article class="artist searchable">
 
-            <div class="era-date">
-                1877–1920s
-            </div>
+                <h3>
+                    SZA
+                </h3>
+
+                <div class="artist-type">
+                    R&B · SOUL · CONTEMPORARY MUSIC
+                </div>
+
+                <p>
+                    A contemporary artist whose music often combines
+                    R&B and alternative influences with introspective
+                    writing about relationships, identity, vulnerability,
+                    and self-perception.
+                </p>
+
+                <a
+                    class="music-button"
+                    href="https://open.spotify.com/search/SZA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore on Spotify
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MUSIC HISTORY
+         ===================================== -->
+
+    <section
+        class="music-section"
+        id="history"
+    >
+
+        <div class="section-label">
+            05 — HISTORY
+        </div>
+
+        <h2>
+            Follow the timeline
+        </h2>
+
+        <p class="section-intro">
+            Music changes alongside technology, politics, economics,
+            migration, social movements, and culture. Follow some
+            of the major developments that shaped recorded music.
+        </p>
+
+
+        <div class="history">
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    1877–1920s
+                </div>
+
+                <h3>
+                    The beginning of recorded sound
+                </h3>
+
+                <p>
+                    Mechanical recording technologies made it possible
+                    to preserve and reproduce performances. Music
+                    increasingly became something that could be owned,
+                    distributed, and listened to outside a live setting.
+                </p>
+
+            </article>
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    1920s–1940s
+                </div>
+
+                <h3>
+                    Radio, jazz, and mass audiences
+                </h3>
+
+                <p>
+                    Radio transformed how people encountered music.
+                    Jazz developed rapidly as musicians experimented
+                    with rhythm, improvisation, harmony, and ensemble
+                    interaction.
+                </p>
+
+            </article>
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    1950s–1970s
+                </div>
+
+                <h3>
+                    Rock, soul, and popular music
+                </h3>
+
+                <p>
+                    Rock and roll, soul, Motown, folk, funk, and other
+                    movements reshaped popular music. Music also became
+                    increasingly connected to youth culture and social
+                    change.
+                </p>
+
+            </article>
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    1970s–1990s
+                </div>
+
+                <h3>
+                    Hip-hop, sampling, and new production
+                </h3>
+
+                <p>
+                    Hip-hop emerged from Black and Latino communities
+                    in New York and developed new approaches to rhythm,
+                    DJing, sampling, MCing, and production that would
+                    influence global popular music.
+                </p>
+
+            </article>
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    1980s–2000s
+                </div>
+
+                <h3>
+                    Digital music
+                </h3>
+
+                <p>
+                    Digital recording, CDs, synthesizers, computers,
+                    and eventually file-sharing changed how music was
+                    produced, distributed, purchased, and experienced.
+                </p>
+
+            </article>
+
+
+            <article class="history-item searchable">
+
+                <div class="history-date">
+                    2000s–present
+                </div>
+
+                <h3>
+                    Streaming and the global music ecosystem
+                </h3>
+
+                <p>
+                    Streaming platforms have made enormous catalogs
+                    immediately accessible while changing how artists
+                    release music, how listeners discover it, and how
+                    the music industry earns revenue.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         GENRES
+         ===================================== -->
+
+    <section
+        class="music-section"
+        id="genres"
+    >
+
+        <div class="section-label">
+            06 — GENRES
+        </div>
+
+        <h2>
+            Explore genres
+        </h2>
+
+        <p class="section-intro">
+            Genres are useful starting points, but they overlap,
+            evolve, and often reflect cultural histories that are
+            more complicated than a single label suggests.
+        </p>
+
+
+        <div class="genre-grid">
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    UNITED STATES
+                </div>
+
+                <h3>
+                    Rock
+                </h3>
+
+                <p>
+                    A broad family of styles rooted in earlier forms
+                    of popular music, blues, rhythm and blues, and
+                    country.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    AFRICAN AMERICAN TRADITIONS
+                </div>
+
+                <h3>
+                    Jazz
+                </h3>
+
+                <p>
+                    Characterized by improvisation, rhythmic complexity,
+                    distinctive harmonic approaches, and a history
+                    closely connected to Black American culture.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    GLOBAL POPULAR MUSIC
+                </div>
+
+                <h3>
+                    Pop
+                </h3>
+
+                <p>
+                    A broad category of commercially distributed
+                    popular music shaped by changing technologies,
+                    trends, and audience tastes.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    BRONX · NEW YORK
+                </div>
+
+                <h3>
+                    Hip-Hop
+                </h3>
+
+                <p>
+                    A cultural movement and musical tradition involving
+                    MCing, DJing, breakdancing, graffiti, sampling,
+                    production, and diverse forms of rap.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    UNITED STATES
+                </div>
+
+                <h3>
+                    R&B
+                </h3>
+
+                <p>
+                    A broad tradition that developed from rhythm and
+                    blues and became connected to soul, funk, pop,
+                    hip-hop, and contemporary production.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    EUROPEAN TRADITIONS
+                </div>
+
+                <h3>
+                    Classical
+                </h3>
+
+                <p>
+                    A broad category encompassing centuries of
+                    composed Western art music, from early traditions
+                    through modern and contemporary works.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    GLOBAL TRADITIONS
+                </div>
+
+                <h3>
+                    Folk
+                </h3>
+
+                <p>
+                    Music connected to particular communities,
+                    traditions, stories, practices, and forms of
+                    cultural transmission.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    20TH–21ST CENTURY
+                </div>
+
+                <h3>
+                    Electronic
+                </h3>
+
+                <p>
+                    Music created or substantially shaped through
+                    electronic instruments, digital production,
+                    synthesis, sampling, and computer technology.
+                </p>
+
+            </article>
+
+
+            <article class="genre-card searchable">
+
+                <div class="genre-origin">
+                    UNITED STATES
+                </div>
+
+                <h3>
+                    Country
+                </h3>
+
+                <p>
+                    A diverse American tradition influenced by folk,
+                    blues, gospel, and other musical traditions, often
+                    centered on storytelling and songcraft.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MUSIC NOTES
+         ===================================== -->
+
+    <section
+        class="music-section"
+        id="notes"
+    >
+
+        <div class="section-label">
+            07 — CONNECTION
+        </div>
+
+        <h2>
+            Music → Notes
+        </h2>
+
+        <div class="music-notes">
 
             <h3>
-                Early recording
+                Build your music commonplace.
             </h3>
 
             <p>
-                Mechanical recording transformed music from
-                something primarily experienced in person into
-                something that could be stored and replayed.
+                Save an album, artist, song, genre, historical detail,
+                or question directly into your Notes archive. Your
+                music research can then connect with the rest of
+                The Commonplace.
             </p>
 
-        </article>
 
-
-        <article class="music-era searchable-music">
-
-            <div class="era-date">
-                1920s–1940s
-            </div>
-
-            <h3>
-                Jazz & the radio age
-            </h3>
-
-            <p>
-                Jazz developed alongside new recording and
-                broadcasting technologies, while radio brought
-                music into homes on a mass scale.
-            </p>
-
-        </article>
-
-
-        <article class="music-era searchable-music">
-
-            <div class="era-date">
-                1950s–1970s
-            </div>
-
-            <h3>
-                Rock & popular music
-            </h3>
-
-            <p>
-                Rock and roll, soul, folk, funk, and other
-                movements reshaped youth culture, recording,
-                performance, and popular identity.
-            </p>
-
-        </article>
-
-
-        <article class="music-era searchable-music">
-
-            <div class="era-date">
-                1970s–1990s
-            </div>
-
-            <h3>
-                Hip-hop & sampling
-            </h3>
-
-            <p>
-                Hip-hop developed new approaches to rhythm,
-                DJing, sampling, storytelling, production,
-                and community expression.
-            </p>
-
-        </article>
-
-
-        <article class="music-era searchable-music">
-
-            <div class="era-date">
-                2000s–present
-            </div>
-
-            <h3>
-                The digital era
-            </h3>
-
-            <p>
-                Downloads, streaming, social media, home
-                production, and algorithmic discovery changed
-                how artists release music and how listeners
-                find it.
-            </p>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     GENRES
-     ========================================= -->
-
-<section
-    class="music-section"
-    id="genres"
->
-
-    <div class="music-label">
-        GENRES
-    </div>
-
-    <h2>
-        Find your sound
-    </h2>
-
-    <p class="music-intro">
-        Genres are useful maps, but music constantly crosses
-        the borders we give it.
-    </p>
-
-
-    <div class="genre-grid">
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Rock"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♩
-            </span>
-
-            <span class="genre-name">
-                Rock
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Jazz"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♫
-            </span>
-
-            <span class="genre-name">
-                Jazz
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Pop"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ★
-            </span>
-
-            <span class="genre-name">
-                Pop
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Hip-Hop"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♬
-            </span>
-
-            <span class="genre-name">
-                Hip-Hop
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/R%26B"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♥
-            </span>
-
-            <span class="genre-name">
-                R&B
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Classical"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♩
-            </span>
-
-            <span class="genre-name">
-                Classical
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Folk"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♬
-            </span>
-
-            <span class="genre-name">
-                Folk
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Electronic"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                〰
-            </span>
-
-            <span class="genre-name">
-                Electronic
-            </span>
-        </a>
-
-
-        <a
-            class="genre searchable-music"
-            href="https://open.spotify.com/search/Country"
-            target="_blank"
-            rel="noopener"
-        >
-            <span class="genre-symbol">
-                ♩
-            </span>
-
-            <span class="genre-name">
-                Country
-            </span>
-        </a>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     MUSIC NOTES
-     ========================================= -->
-
-<section
-    class="music-section"
-    id="music-notes"
->
-
-    <div class="music-label">
-        MUSIC NOTES
-    </div>
-
-    <h2>
-        Save what moves you
-    </h2>
-
-    <p class="music-intro">
-        Found a song, artist, album, or musical idea worth
-        remembering? Send it directly into your Commonplace Notes.
-    </p>
-
-
-    <div class="music-notes">
-
-
-        <div class="music-card">
-
-            <h3>
-                Quick note
-            </h3>
-
-
-            <form
-                class="note-form"
-                onsubmit="saveMusicNote(event)"
-            >
-
-                <label for="musicNoteTitle">
-                    TITLE
-                </label>
+            <form onsubmit="saveMusicNote(event)">
 
                 <input
-                    id="musicNoteTitle"
                     type="text"
-                    placeholder="Song, album, artist..."
+                    id="musicNoteTitle"
+                    placeholder="Title"
                     required
                 >
 
 
-                <label for="musicNoteCategory">
-                    CATEGORY
-                </label>
+                <select
+                    id="musicNoteCategory"
+                    required
+                >
 
-                <select id="musicNoteCategory">
+                    <option value="">
+                        Choose a category
+                    </option>
 
                     <option value="Music">
                         Music
                     </option>
 
-                    <option value="Philosophy">
-                        Philosophy
+                    <option value="Artist">
+                        Artist
                     </option>
 
-                    <option value="Politics">
-                        Politics
+                    <option value="Album">
+                        Album
                     </option>
 
-                    <option value="Questions">
-                        Questions
+                    <option value="Genre">
+                        Genre
+                    </option>
+
+                    <option value="Music History">
+                        Music History
+                    </option>
+
+                    <option value="Question">
+                        Question
                     </option>
 
                 </select>
 
 
-                <label for="musicNoteSource">
-                    SOURCE
-                </label>
-
                 <input
-                    id="musicNoteSource"
                     type="text"
-                    placeholder="Spotify, album, artist..."
+                    id="musicNoteSource"
+                    placeholder="Source / artist / album / link"
                 >
 
-
-                <label for="musicNoteContent">
-                    NOTE
-                </label>
 
                 <textarea
                     id="musicNoteContent"
-                    placeholder="What do you want to remember?"
+                    placeholder="Write your note..."
+                    required
                 ></textarea>
 
 
-                <button
-                    class="music-button"
-                    type="submit"
-                >
-                    Send to Notes
+                <button type="submit">
+                    Save to Notes
                 </button>
-
-
-                <div
-                    class="note-status"
-                    id="noteStatus"
-                ></div>
 
             </form>
 
         </div>
 
-
-        <div class="music-card">
-
-            <h3>
-                Your music journal
-            </h3>
-
-            <p>
-                The Notes page is where your listening history
-                can become part of your larger research archive.
-                Keep observations about lyrics, production,
-                history, genre, artists, or connections to
-                philosophy and politics.
-            </p>
-
-
-            <a
-                class="music-button"
-                href="notes.html"
-            >
-                Open Notes →
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
+    </section>
 
 
 </main>
@@ -1745,145 +1385,116 @@
 
 <script>
 
+    /* =========================================
+       SEARCH
+       ========================================= */
 
-/* =========================================
-   MUSIC SEARCH
-   ========================================= */
+    function searchMusic() {
 
-function searchMusic() {
-
-    const query =
-        document
-            .getElementById("musicSearch")
-            .value
-            .toLowerCase()
-            .trim();
-
-
-    const items =
-        document.querySelectorAll(
-            ".searchable-music"
-        );
+        const query =
+            document
+                .getElementById("musicSearch")
+                .value
+                .toLowerCase()
+                .trim();
 
 
-    let visible = 0;
+        const items =
+            document.querySelectorAll(".searchable");
 
 
-    items.forEach(function(item) {
+        items.forEach(function(item) {
 
-        const text =
-            item.textContent
-                .toLowerCase();
-
-
-        if (
-            query === "" ||
-            text.includes(query)
-        ) {
-
-            item.style.display = "";
-
-            visible++;
-
-        } else {
-
-            item.style.display = "none";
-
-        }
-
-    });
+            const text =
+                item.textContent.toLowerCase();
 
 
-    document
-        .getElementById("searchEmpty")
-        .style.display =
-            query !== "" && visible === 0
-                ? "block"
-                : "none";
+            if (
+                query === "" ||
+                text.includes(query)
+            ) {
 
-}
+                item.style.display = "";
 
+            } else {
 
-/* =========================================
-   SEND MUSIC NOTES TO NOTES.HTML
-   ========================================= */
+                item.style.display = "none";
 
-function saveMusicNote(event) {
+            }
 
-    event.preventDefault();
+        });
 
-
-    const title =
-        document
-            .getElementById("musicNoteTitle")
-            .value
-            .trim();
-
-
-    const category =
-        document
-            .getElementById("musicNoteCategory")
-            .value;
-
-
-    const source =
-        document
-            .getElementById("musicNoteSource")
-            .value
-            .trim();
-
-
-    const content =
-        document
-            .getElementById("musicNoteContent")
-            .value
-            .trim();
-
-
-    if (!title) {
-        return;
     }
 
 
-    const params =
-        new URLSearchParams();
+    /* =========================================
+       SAVE MUSIC NOTE
+       ========================================= */
+
+    function saveMusicNote(event) {
+
+        event.preventDefault();
 
 
-    params.set(
-        "title",
-        title
-    );
+        const title =
+            document
+                .getElementById("musicNoteTitle")
+                .value
+                .trim();
 
 
-    params.set(
-        "category",
-        category
-    );
+        const category =
+            document
+                .getElementById("musicNoteCategory")
+                .value;
 
 
-    params.set(
-        "source",
-        source || "Music"
-    );
+        const source =
+            document
+                .getElementById("musicNoteSource")
+                .value
+                .trim();
 
 
-    params.set(
-        "summary",
-        content || "Music note"
-    );
+        const content =
+            document
+                .getElementById("musicNoteContent")
+                .value
+                .trim();
 
 
-    params.set(
-        "content",
-        content
-    );
+        if (!title || !category || !content) {
+
+            alert(
+                "Please add a title, category, and note."
+            );
+
+            return;
+
+        }
 
 
-    window.location.href =
-        "notes.html?" +
-        params.toString();
+        const params =
+            new URLSearchParams({
 
-}
+                title: title,
+
+                category: category,
+
+                source: source,
+
+                summary: content,
+
+                content: content
+
+            });
+
+
+        window.location.href =
+            "notes.html?" +
+            params.toString();
+
+    }
 
 </script>
 
