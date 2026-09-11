@@ -755,3 +755,36 @@ header nav a:visited,
 .commonplace-nav a:visited {
     text-decoration: none !important;
 }
+/* =========================================
+   FINAL COMMONPLACE HEADER OVERRIDE
+   Make every page match Notes
+   ========================================= */
+
+.commonplace-header {
+    background: var(--cream) !important;
+    border-bottom: 1px solid var(--border) !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.commonplace-logo,
+.commonplace-logo:visited {
+    color: var(--ink) !important;
+    text-decoration: none !important;
+}
+
+.commonplace-nav a,
+.commonplace-nav a:visited {
+    color: var(--muted) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.commonplace-nav a:hover,
+.commonplace-nav a:focus {
+    color: var(--ink) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+}
