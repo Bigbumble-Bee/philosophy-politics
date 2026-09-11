@@ -1,1112 +1,2152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Politics | The Commonplace</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Politics — The Commonplace</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================================
+           POLITICS PAGE
+           ========================================= */
+
+        .politics-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px 90px;
+        }
+
+        /* HERO */
+
+        .politics-hero {
+            padding: 55px 0 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eyebrow {
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+            letter-spacing: .18em;
+            color: var(--burgundy);
+            margin-bottom: 18px;
+        }
+
+        .politics-hero h1 {
+            margin: 0 0 25px;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            line-height: .9;
+            font-weight: normal;
+        }
+
+        .politics-hero p {
+            max-width: 720px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .hero-question {
+            margin-top: 35px;
+            padding-left: 20px;
+            border-left: 2px solid var(--burgundy);
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        /* SECTION */
+
+        .politics-section {
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: Arial, sans-serif;
+            font-size: .66rem;
+            letter-spacing: .16em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .politics-section h2 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+        .section-intro {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 32px;
+        }
+
+        /* SEARCH */
+
+        .politics-search {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.35);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .politics-search:focus {
+            outline: 1px solid var(--burgundy);
+        }
+
+        .search-message {
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: .7rem;
+            letter-spacing: .04em;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            position: relative;
+            margin-top: 35px;
+            padding-left: 30px;
+            border-left: 1px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            border: 1px solid var(--ink);
+            background: var(--cream);
+        }
+
+        .timeline-date {
+            font-family: Arial, sans-serif;
+            font-size: .67rem;
+            letter-spacing: .12em;
+            color: var(--burgundy);
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.45rem;
+            font-weight: normal;
+            margin: 0 0 8px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0;
+        }
+
+        /* THINKERS */
+
+        .thinker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .thinker-card {
+            border: 1px solid var(--border);
+            padding: 28px;
+            background: rgba(255,255,255,.18);
+        }
+
+        .thinker-period {
+            font-family: Arial, sans-serif;
+            font-size: .63rem;
+            letter-spacing: .1em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .thinker-card h3 {
+            font-size: 1.65rem;
+            font-weight: normal;
+            margin: 0 0 6px;
+        }
+
+        .thinker-school {
+            color: var(--burgundy);
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+            letter-spacing: .07em;
+            margin-bottom: 20px;
+        }
+
+        .thinker-card p {
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .thinker-actions {
+            margin-top: 22px;
+        }
+
+        .save-note-button {
+            display: inline-block;
+            padding: 10px 14px;
+            border: 1px solid var(--ink);
+            color: var(--ink) !important;
+            text-decoration: none !important;
+            font-family: Arial, sans-serif;
+            font-size: .66rem;
+            letter-spacing: .05em;
+        }
+
+        .save-note-button:hover {
+            background: var(--ink);
+            color: var(--cream) !important;
+        }
+
+        /* GOVERNMENT / IDEOLOGIES */
+
+        .school-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .school-card {
+            border: 1px solid var(--border);
+            padding: 24px;
+        }
+
+        .school-card h3 {
+            font-size: 1.35rem;
+            font-weight: normal;
+            margin: 0 0 10px;
+        }
+
+        .school-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        .school-origin {
+            font-family: Arial, sans-serif;
+            font-size: .62rem;
+            letter-spacing: .08em;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        /* CONCEPTS */
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .concept {
+            border: 1px solid var(--border);
+            padding: 22px;
+        }
+
+        .concept h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin: 0 0 8px;
+        }
+
+        .concept p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: .88rem;
+            margin: 0;
+        }
+
+        /* DOCUMENTS */
+
+        .document-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .document {
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+
+        .document-date {
+            font-family: Arial, sans-serif;
+            font-size: .63rem;
+            letter-spacing: .1em;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .document h3 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            margin: 0 0 10px;
+        }
+
+        .document p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        /* QUESTIONS */
+
+        .question-box {
+            border: 1px solid var(--border);
+            padding: 30px;
+            background: rgba(255,255,255,.18);
+        }
+
+        .question-box textarea {
+            width: 100%;
+            min-height: 120px;
+            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.4);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .question-box button {
+            margin-top: 12px;
+            padding: 11px 17px;
+            border: 1px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+        }
+
+        .question-box button:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .question-result {
+            display: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .question-result.active {
+            display: block;
+        }
+
+        .question-result h3 {
+            font-size: 1.25rem;
+            font-weight: normal;
+        }
+
+        .research-steps {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* NOTES */
+
+        .notes-connection {
+            border: 1px solid var(--border);
+            padding: 35px;
+        }
+
+        .notes-connection h3 {
+            font-size: 1.7rem;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+        .notes-connection p {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .notes-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 11px 16px;
+            border: 1px solid var(--ink);
+            color: var(--ink) !important;
+            text-decoration: none !important;
+            font-family: Arial, sans-serif;
+            font-size: .68rem;
+        }
+
+        .notes-link:hover {
+            background: var(--ink);
+            color: var(--cream) !important;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .thinker-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .school-grid,
+            .concept-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .politics-page {
+                padding: 25px 16px 60px;
+            }
+
+            .politics-hero {
+                padding-top: 30px;
+            }
+
+            .school-grid,
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .politics-section {
+                margin: 60px 0;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-  <!-- SITE HEADER -->
-  <header class="commonplace-header">
-    <a href="index.html" class="commonplace-logo">The Commonplace</a>
+<header class="commonplace-header">
+
+    <a href="index.html" class="commonplace-logo">
+        The Commonplace
+    </a>
 
     <nav class="commonplace-nav">
-      <a href="philosophy.html">Philosophy</a>
-      <a href="politics.html" class="active">Politics</a>
-      <a href="music.html">Music</a>
-      <a href="notes.html">Notes</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="politics.html">Politics</a>
+        <a href="music.html">Music</a>
+        <a href="notes.html">Notes</a>
     </nav>
-  </header>
+
+</header>
 
 
-  <main class="politics-page">
+<main class="politics-page">
 
-    <!-- HERO -->
+
+    <!-- =====================================
+         HERO
+         ===================================== -->
+
     <section class="politics-hero">
-      <p class="eyebrow">03 — POLITICS</p>
 
-      <h1>Politics</h1>
+        <div class="eyebrow">
+            02 — POLITICS
+        </div>
 
-      <p class="hero-description">
-        The study of power, government, institutions, citizenship, conflict,
-        and the ways people organize themselves.
-      </p>
-
-      <p class="hero-question">
-        Who gets power, how is it used, and what makes a government legitimate?
-      </p>
-    </section>
-
-
-    <!-- SEARCH -->
-    <section class="politics-section" id="politics-search">
-
-      <p class="section-label">SEARCH</p>
-
-      <h2>Explore politics</h2>
-
-      <p class="section-intro">
-        Search the political ideas, thinkers, governments, concepts, and
-        historical events collected here.
-      </p>
-
-      <input
-        type="text"
-        id="politicsSearch"
-        class="search-box"
-        placeholder="Search politics..."
-        onkeyup="searchPolitics()"
-        aria-label="Search politics"
-      >
-
-      <p id="searchMessage" class="search-message"></p>
-
-    </section>
-
-
-    <!-- TIMELINE -->
-    <section class="politics-section" id="timeline">
-
-      <p class="section-label">01 — TIMELINE</p>
-
-      <h2>A history of political thought</h2>
-
-      <p class="section-intro">
-        Political systems did not appear all at once. Ideas about authority,
-        citizenship, rights, and government developed over thousands of years.
-      </p>
-
-
-      <div class="timeline">
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">c. 3500–500 BCE</span>
-
-          <div>
-            <h3>Early states and civilizations</h3>
-
-            <p>
-              Early civilizations developed organized governments, legal
-              systems, taxation, armies, and social hierarchies. Mesopotamia,
-              Egypt, the Indus Valley, and ancient China provide some of the
-              earliest examples of large-scale political organization.
-            </p>
-
-            <span class="timeline-tag">Origins of government</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">c. 508 BCE</span>
-
-          <div>
-            <h3>Athenian democracy</h3>
-
-            <p>
-              Athens developed a form of direct democracy in which eligible
-              citizens participated directly in political decisions. It was
-              limited by modern standards because women, enslaved people, and
-              many foreigners were excluded from citizenship.
-            </p>
-
-            <span class="timeline-tag">Democracy</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">c. 380 BCE</span>
-
-          <div>
-            <h3>Plato and the question of the ideal state</h3>
-
-            <p>
-              Plato examined justice, political leadership, education, and the
-              organization of society in <em>The Republic</em>.
-            </p>
-
-            <span class="timeline-tag">Political philosophy</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">c. 350 BCE</span>
-
-          <div>
-            <h3>Aristotle studies government</h3>
-
-            <p>
-              Aristotle compared different forms of government and examined
-              how constitutions function, how political communities develop,
-              and what makes a political system stable.
-            </p>
-
-            <span class="timeline-tag">Political science</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1215</span>
-
-          <div>
-            <h3>Magna Carta</h3>
-
-            <p>
-              The Magna Carta placed important limits on royal authority in
-              medieval England and became an influential part of the later
-              development of constitutional government and the rule of law.
-            </p>
-
-            <span class="timeline-tag">Limited government</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1600s–1700s</span>
-
-          <div>
-            <h3>The Enlightenment</h3>
-
-            <p>
-              Enlightenment thinkers developed influential arguments about
-              natural rights, reason, liberty, sovereignty, government, and
-              the relationship between citizens and political authority.
-            </p>
-
-            <span class="timeline-tag">Enlightenment</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1776</span>
-
-          <div>
-            <h3>American Declaration of Independence</h3>
-
-            <p>
-              The Declaration argued that governments derive their legitimacy
-              from the consent of the governed and that people possess
-              fundamental rights.
-            </p>
-
-            <span class="timeline-tag">Rights &amp; revolution</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1787–1788</span>
-
-          <div>
-            <h3>Constitutional government</h3>
-
-            <p>
-              The United States Constitution established a federal system with
-              separated powers, checks and balances, representative government,
-              and a framework for limiting governmental authority.
-            </p>
-
-            <span class="timeline-tag">Constitutionalism</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1789</span>
-
-          <div>
-            <h3>French Revolution</h3>
-
-            <p>
-              The French Revolution challenged monarchy and inherited
-              privilege while introducing powerful debates about citizenship,
-              equality, sovereignty, and political rights.
-            </p>
-
-            <span class="timeline-tag">Revolution</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1800s</span>
-
-          <div>
-            <h3>Industrialization and new political ideologies</h3>
-
-            <p>
-              Industrialization transformed societies and contributed to the
-              development and spread of liberalism, socialism, nationalism,
-              labor movements, and other political ideologies.
-            </p>
-
-            <span class="timeline-tag">Ideologies</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">1900s</span>
-
-          <div>
-            <h3>Mass democracy and political movements</h3>
-
-            <p>
-              The twentieth century saw major struggles over democracy,
-              colonialism, communism, fascism, civil rights, women's political
-              participation, national independence, and human rights.
-            </p>
-
-            <span class="timeline-tag">Modern politics</span>
-          </div>
-        </article>
-
-
-        <article class="timeline-item searchable">
-          <span class="timeline-date">2000s–present</span>
-
-          <div>
-            <h3>Politics in a connected world</h3>
-
-            <p>
-              Digital communication, globalization, political polarization,
-              misinformation, migration, climate politics, and changing
-              relationships between governments and citizens shape contemporary
-              political life.
-            </p>
-
-            <span class="timeline-tag">Contemporary politics</span>
-          </div>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- THINKERS -->
-    <section class="politics-section" id="thinkers">
-
-      <p class="section-label">02 — THINKERS</p>
-
-      <h2>People who changed political thought</h2>
-
-      <p class="section-intro">
-        Political ideas are often arguments between people across different
-        centuries. These thinkers provide starting points for understanding
-        those arguments.
-      </p>
-
-
-      <div class="card-grid">
-
-        <article class="info-card searchable">
-          <span class="card-number">01</span>
-          <h3>Plato</h3>
-          <p class="card-meta">c. 428–348 BCE</p>
-
-          <p>
-            Explored justice, political leadership, education, and the ideal
-            structure of society.
-          </p>
-
-          <p class="card-question">
-            Key question: What makes a society just?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">02</span>
-          <h3>Aristotle</h3>
-          <p class="card-meta">384–322 BCE</p>
-
-          <p>
-            Classified political systems and examined citizenship, constitutions,
-            political stability, and the purpose of the political community.
-          </p>
-
-          <p class="card-question">
-            Key question: What makes a government work well?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">03</span>
-          <h3>Niccolò Machiavelli</h3>
-          <p class="card-meta">1469–1527</p>
-
-          <p>
-            Analyzed political power, leadership, conflict, and the practical
-            realities of ruling.
-          </p>
-
-          <p class="card-question">
-            Key question: How does political power actually work?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">04</span>
-          <h3>Thomas Hobbes</h3>
-          <p class="card-meta">1588–1679</p>
-
-          <p>
-            Argued that political authority could be justified by the need for
-            security and order.
-          </p>
-
-          <p class="card-question">
-            Key question: Why would people accept government authority?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">05</span>
-          <h3>John Locke</h3>
-          <p class="card-meta">1632–1704</p>
-
-          <p>
-            Developed influential arguments about natural rights, consent,
-            limited government, and the right of resistance.
-          </p>
-
-          <p class="card-question">
-            Key question: What rights should government protect?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">06</span>
-          <h3>Jean-Jacques Rousseau</h3>
-          <p class="card-meta">1712–1778</p>
-
-          <p>
-            Examined popular sovereignty, political freedom, equality, and the
-            relationship between individuals and the political community.
-          </p>
-
-          <p class="card-question">
-            Key question: What does popular sovereignty mean?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">07</span>
-          <h3>Mary Wollstonecraft</h3>
-          <p class="card-meta">1759–1797</p>
-
-          <p>
-            Challenged political and educational inequalities affecting women
-            and argued for women's intellectual and civic equality.
-          </p>
-
-          <p class="card-question">
-            Key question: Who should count as a political citizen?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">08</span>
-          <h3>Karl Marx</h3>
-          <p class="card-meta">1818–1883</p>
-
-          <p>
-            Developed a critique of capitalism centered on class, labor,
-            ownership, and economic power.
-          </p>
-
-          <p class="card-question">
-            Key question: How does economic power affect political power?
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">09</span>
-          <h3>Hannah Arendt</h3>
-          <p class="card-meta">1906–1975</p>
-
-          <p>
-            Studied totalitarianism, political action, power, freedom, and the
-            conditions that allow people to participate in public life.
-          </p>
-
-          <p class="card-question">
-            Key question: What happens when political freedom disappears?
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- FORMS OF GOVERNMENT -->
-    <section class="politics-section" id="government">
-
-      <p class="section-label">03 — GOVERNMENT</p>
-
-      <h2>Forms of government</h2>
-
-      <p class="section-intro">
-        A government describes the institutions and structures through which
-        political authority is organized and exercised.
-      </p>
-
-
-      <div class="card-grid">
-
-        <article class="info-card searchable">
-          <h3>Democracy</h3>
-          <p>
-            Political authority is connected to the people, usually through
-            voting, representation, participation, and constitutional rules.
-          </p>
-          <p class="card-meta">Key idea: popular participation</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Republic</h3>
-          <p>
-            A system in which political authority is exercised through
-            representatives and institutions rather than hereditary monarchy.
-          </p>
-          <p class="card-meta">Key idea: representative government</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Monarchy</h3>
-          <p>
-            A system in which a monarch serves as head of state. Monarchies
-            can differ greatly in how much political power the monarch holds.
-          </p>
-          <p class="card-meta">Key idea: monarchy</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Oligarchy</h3>
-          <p>
-            Political power is concentrated among a relatively small group of
-            people.
-          </p>
-          <p class="card-meta">Key idea: concentrated power</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Autocracy</h3>
-          <p>
-            Political authority is concentrated in the hands of one ruler or a
-            very small ruling group.
-          </p>
-          <p class="card-meta">Key idea: centralized authority</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Theocracy</h3>
-          <p>
-            Governmental authority is strongly connected to religious
-            leadership or religious law.
-          </p>
-          <p class="card-meta">Key idea: religious authority</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Authoritarianism</h3>
-          <p>
-            Political power is concentrated and political participation and
-            opposition are significantly restricted.
-          </p>
-          <p class="card-meta">Key idea: restricted political competition</p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Totalitarianism</h3>
-          <p>
-            An extreme form of political control in which a regime seeks
-            extensive control over political and social life.
-          </p>
-          <p class="card-meta">Key idea: extensive state control</p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- IDEOLOGIES -->
-    <section class="politics-section" id="ideologies">
-
-      <p class="section-label">04 — IDEOLOGIES</p>
-
-      <h2>Political ideologies &amp; movements</h2>
-
-      <p class="section-intro">
-        Ideologies are systems of political ideas about how society should be
-        organized and how power, rights, property, equality, and government
-        should work.
-      </p>
-
-
-      <div class="card-grid">
-
-        <article class="info-card searchable">
-          <h3>Liberalism</h3>
-          <p>
-            Places significant emphasis on individual liberty, rights,
-            constitutional government, and political equality.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Conservatism</h3>
-          <p>
-            Generally emphasizes tradition, social continuity, institutional
-            stability, and cautious approaches to political change.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Socialism</h3>
-          <p>
-            Encompasses traditions that emphasize social or collective control
-            over important economic resources and concerns about economic
-            inequality.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Communism</h3>
-          <p>
-            A political and economic tradition associated with common ownership
-            and the goal of a classless society, particularly through Marxist
-            traditions.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Nationalism</h3>
-          <p>
-            Emphasizes the political importance of the nation and often argues
-            that national identity should have a significant role in political
-            organization.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Anarchism</h3>
-          <p>
-            Includes political traditions that criticize coercive hierarchy and
-            centralized state authority while proposing alternative forms of
-            social organization.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Feminism</h3>
-          <p>
-            A broad collection of movements and theories concerned with gender
-            equality, power, rights, and the social and political position of
-            women.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <h3>Environmentalism</h3>
-          <p>
-            Political movements and ideas focused on the relationship between
-            human societies, environmental systems, and long-term sustainability.
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONCEPTS -->
-    <section class="politics-section" id="concepts">
-
-      <p class="section-label">05 — CONCEPTS</p>
-
-      <h2>Political glossary</h2>
-
-      <p class="section-intro">
-        These are some of the vocabulary terms that make political research
-        easier to understand.
-      </p>
-
-
-      <div class="concept-grid">
-
-        <article class="concept-card searchable">
-          <h3>Sovereignty</h3>
-          <p>
-            The supreme authority to govern a political territory or community.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Legitimacy</h3>
-          <p>
-            The perceived rightfulness or justification of political authority.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Rule of law</h3>
-          <p>
-            The principle that laws govern public authority and that government
-            officials are also subject to the law.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Separation of powers</h3>
-          <p>
-            Dividing governmental authority among different branches or
-            institutions to prevent excessive concentration of power.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Checks and balances</h3>
-          <p>
-            Mechanisms that allow different parts of government to limit or
-            oversee one another.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Federalism</h3>
-          <p>
-            A system in which governmental authority is constitutionally divided
-            between national and subnational governments.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Popular sovereignty</h3>
-          <p>
-            The principle that political authority ultimately comes from the
-            people.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Social contract</h3>
-          <p>
-            A family of political theories explaining political authority through
-            an agreement, implicit or explicit, between people and government.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Civil liberties</h3>
-          <p>
-            Protections against governmental interference with fundamental
-            freedoms.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Civil rights</h3>
-          <p>
-            Legal protections intended to secure equal treatment and prevent
-            discrimination.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Political participation</h3>
-          <p>
-            The ways people take part in political life, including voting,
-            organizing, advocacy, and public discussion.
-          </p>
-        </article>
-
-
-        <article class="concept-card searchable">
-          <h3>Political power</h3>
-          <p>
-            The ability to influence political decisions, institutions,
-            behavior, or the distribution of resources.
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- DOCUMENTS & EVENTS -->
-    <section class="politics-section" id="documents">
-
-      <p class="section-label">06 — DOCUMENTS &amp; EVENTS</p>
-
-      <h2>Documents worth knowing</h2>
-
-      <p class="section-intro">
-        Political ideas become especially interesting when you encounter them
-        in the original documents that shaped political history.
-      </p>
-
-
-      <div class="card-grid">
-
-        <article class="info-card searchable">
-          <span class="card-number">01</span>
-          <h3>Magna Carta</h3>
-          <p class="card-meta">1215</p>
-          <p>
-            An influential medieval charter associated with limits on royal
-            authority and the development of constitutional ideas.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">02</span>
-          <h3>English Bill of Rights</h3>
-          <p class="card-meta">1689</p>
-          <p>
-            Established important limits on the English monarchy and protections
-            connected to Parliament and political rights.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">03</span>
-          <h3>Declaration of Independence</h3>
-          <p class="card-meta">1776</p>
-          <p>
-            Presented an argument for independence based on natural rights,
-            equality, and government by consent.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">04</span>
-          <h3>U.S. Constitution</h3>
-          <p class="card-meta">1787</p>
-          <p>
-            Established the framework of the United States federal government
-            and its institutional structure.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">05</span>
-          <h3>Federalist Papers</h3>
-          <p class="card-meta">1787–1788</p>
-          <p>
-            Essays defending and explaining the proposed United States
-            Constitution, including arguments about factions, federalism,
-            representation, and checks and balances.
-          </p>
-        </article>
-
-
-        <article class="info-card searchable">
-          <span class="card-number">06</span>
-          <h3>Universal Declaration of Human Rights</h3>
-          <p class="card-meta">1948</p>
-          <p>
-            A foundational international statement describing fundamental human
-            rights and freedoms.
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- ASK A QUESTION -->
-    <section class="politics-section question-section" id="questions">
-
-      <p class="section-label">07 — QUESTIONS</p>
-
-      <h2>Ask a political question</h2>
-
-      <p class="section-intro">
-        Good political research usually begins with a good question. Start
-        with something you genuinely want to understand.
-      </p>
-
-
-      <div class="question-box">
-
-        <label for="politicalQuestion">
-          What are you curious about?
-        </label>
-
-        <textarea
-          id="politicalQuestion"
-          rows="5"
-          placeholder="Why do governments exist?"
-        ></textarea>
-
-        <button type="button" onclick="researchQuestion()">
-          Explore this question
-        </button>
-
-        <div id="questionResult" class="question-result"></div>
-
-      </div>
-
-    </section>
-
-
-    <!-- NOTES -->
-    <section class="politics-section notes-connection" id="notes">
-
-      <p class="section-label">08 — NOTES</p>
-
-      <h2>Turn research into notes</h2>
-
-      <p class="section-intro">
-        Found an idea worth keeping? Send it to The Commonplace notebook so
-        your political research stays connected to the rest of your library.
-      </p>
-
-
-      <div class="notes-prompt">
-
-        <h3>Politics → Notes</h3>
+        <h1>
+            Politics
+        </h1>
 
         <p>
-          Use Notes to record definitions, questions, arguments, quotations,
-          connections, and your own reactions.
+            The study of power, government, institutions,
+            citizenship, conflict, rights, and the ways people
+            organize themselves.
         </p>
 
-        <a href="notes.html" class="text-link">
-          Open Notes →
-        </a>
-
-      </div>
+        <div class="hero-question">
+            Who gets power, how is it used, and what makes a
+            government legitimate?
+        </div>
 
     </section>
 
-  </main>
+
+    <!-- =====================================
+         SEARCH
+         ===================================== -->
+
+    <section class="politics-section">
+
+        <div class="section-label">
+            EXPLORE
+        </div>
+
+        <h2>
+            Start anywhere.
+        </h2>
+
+        <p class="section-intro">
+            Search this page for political thinkers, governments,
+            ideologies, concepts, documents, or historical events.
+        </p>
+
+        <input
+            class="politics-search"
+            id="politicsSearch"
+            type="search"
+            placeholder="Search politics..."
+            oninput="searchPolitics()"
+        >
+
+        <div
+            id="searchMessage"
+            class="search-message"
+        ></div>
+
+    </section>
 
 
-  <!-- FOOTER -->
-  <footer class="commonplace-footer">
-    <p>A personal library of ideas.</p>
-  </footer>
+    <!-- =====================================
+         TIMELINE
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="timeline"
+    >
+
+        <div class="section-label">
+            01 — HISTORY
+        </div>
+
+        <h2>
+            Follow the timeline
+        </h2>
+
+        <p class="section-intro">
+            Political systems and political ideas developed over
+            thousands of years. Follow the timeline to see how
+            ideas about authority, citizenship, rights, and
+            government changed over time.
+        </p>
 
 
-  <!-- JAVASCRIPT -->
-  <script>
+        <div class="timeline">
 
-    /* POLITICS SEARCH */
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    c. 3500–500 BCE
+                </div>
+
+                <h3>
+                    Early states and civilizations
+                </h3>
+
+                <p>
+                    Early civilizations developed organized
+                    governments, legal systems, taxation, armies,
+                    and social hierarchies. Mesopotamia, Egypt,
+                    the Indus Valley, and ancient China provide
+                    some of the earliest examples of large-scale
+                    political organization.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    c. 508 BCE
+                </div>
+
+                <h3>
+                    Athenian democracy
+                </h3>
+
+                <p>
+                    Athens developed a form of direct democracy
+                    in which eligible citizens participated
+                    directly in political decisions. Its system
+                    excluded large parts of the population from
+                    citizenship.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    c. 380 BCE
+                </div>
+
+                <h3>
+                    Plato and the ideal state
+                </h3>
+
+                <p>
+                    Plato examined justice, political leadership,
+                    education, and the organization of society in
+                    <em>The Republic</em>.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    c. 350 BCE
+                </div>
+
+                <h3>
+                    Aristotle studies government
+                </h3>
+
+                <p>
+                    Aristotle compared different forms of government
+                    and examined citizenship, constitutions,
+                    political stability, and the purpose of the
+                    political community.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1215
+                </div>
+
+                <h3>
+                    Magna Carta
+                </h3>
+
+                <p>
+                    The Magna Carta placed important limits on
+                    royal authority in medieval England and became
+                    influential in the later development of
+                    constitutional government and the rule of law.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1600s–1700s
+                </div>
+
+                <h3>
+                    The Enlightenment
+                </h3>
+
+                <p>
+                    Enlightenment thinkers developed influential
+                    arguments about natural rights, reason,
+                    liberty, sovereignty, government, and the
+                    relationship between citizens and political
+                    authority.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1776
+                </div>
+
+                <h3>
+                    American Declaration of Independence
+                </h3>
+
+                <p>
+                    The Declaration argued that governments derive
+                    their legitimacy from the consent of the
+                    governed and that people possess fundamental
+                    rights.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1787–1788
+                </div>
+
+                <h3>
+                    Constitutional government
+                </h3>
+
+                <p>
+                    The United States Constitution established
+                    a federal system with separated powers,
+                    checks and balances, representative government,
+                    and a framework for limiting governmental
+                    authority.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1789
+                </div>
+
+                <h3>
+                    French Revolution
+                </h3>
+
+                <p>
+                    The French Revolution challenged monarchy and
+                    inherited privilege while introducing powerful
+                    debates about citizenship, equality, sovereignty,
+                    and political rights.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1800s
+                </div>
+
+                <h3>
+                    Industrialization and new ideologies
+                </h3>
+
+                <p>
+                    Industrialization transformed societies and
+                    contributed to the development and spread of
+                    liberalism, socialism, nationalism, labor
+                    movements, and other political ideologies.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    1900s
+                </div>
+
+                <h3>
+                    Mass democracy and political movements
+                </h3>
+
+                <p>
+                    The twentieth century saw major struggles over
+                    democracy, colonialism, communism, fascism,
+                    civil rights, women's political participation,
+                    national independence, and human rights.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item searchable">
+
+                <div class="timeline-date">
+                    2000s–present
+                </div>
+
+                <h3>
+                    Politics in a connected world
+                </h3>
+
+                <p>
+                    Digital communication, globalization, political
+                    polarization, misinformation, migration,
+                    climate politics, and changing relationships
+                    between governments and citizens shape
+                    contemporary political life.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         THINKERS
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="thinkers"
+    >
+
+        <div class="section-label">
+            02 — THINKERS
+        </div>
+
+        <h2>
+            Meet the thinkers
+        </h2>
+
+        <p class="section-intro">
+            Political thought is a conversation across centuries.
+            These thinkers provide starting points for understanding
+            arguments about power, government, rights, society,
+            and political change.
+        </p>
+
+
+        <div class="thinker-grid">
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    c. 428–348 BCE
+                </div>
+
+                <h3>
+                    Plato
+                </h3>
+
+                <div class="thinker-school">
+                    ANCIENT GREECE
+                </div>
+
+                <p>
+                    Explored justice, political leadership, education,
+                    knowledge, and the ideal organization of society.
+                    His political philosophy is especially important
+                    for understanding debates about who should govern.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Plato&category=Politics&source=Plato"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    384–322 BCE
+                </div>
+
+                <h3>
+                    Aristotle
+                </h3>
+
+                <div class="thinker-school">
+                    ANCIENT GREECE
+                </div>
+
+                <p>
+                    Classified political systems and examined
+                    citizenship, constitutions, political stability,
+                    and the purpose of political communities.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Aristotle&category=Politics&source=Aristotle"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1469–1527
+                </div>
+
+                <h3>
+                    Niccolò Machiavelli
+                </h3>
+
+                <div class="thinker-school">
+                    REALISM · POWER
+                </div>
+
+                <p>
+                    Analyzed political power, leadership, conflict,
+                    statecraft, and the practical realities of
+                    political rule. His work is especially important
+                    to the study of political realism.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Machiavelli&category=Politics&source=Machiavelli"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1588–1679
+                </div>
+
+                <h3>
+                    Thomas Hobbes
+                </h3>
+
+                <div class="thinker-school">
+                    SOCIAL CONTRACT
+                </div>
+
+                <p>
+                    Argued that political authority could be
+                    justified by the need for security and order.
+                    His account of the state of nature became a major
+                    part of social contract theory.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Thomas%20Hobbes&category=Politics&source=Hobbes"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1632–1704
+                </div>
+
+                <h3>
+                    John Locke
+                </h3>
+
+                <div class="thinker-school">
+                    NATURAL RIGHTS
+                </div>
+
+                <p>
+                    Developed influential arguments about natural
+                    rights, consent, limited government, property,
+                    and the right of resistance against illegitimate
+                    political authority.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=John%20Locke&category=Politics&source=Locke"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1712–1778
+                </div>
+
+                <h3>
+                    Jean-Jacques Rousseau
+                </h3>
+
+                <div class="thinker-school">
+                    POPULAR SOVEREIGNTY
+                </div>
+
+                <p>
+                    Examined political freedom, equality, popular
+                    sovereignty, and the relationship between
+                    individuals and the political community.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Rousseau&category=Politics&source=Rousseau"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1759–1797
+                </div>
+
+                <h3>
+                    Mary Wollstonecraft
+                </h3>
+
+                <div class="thinker-school">
+                    RIGHTS · EQUALITY
+                </div>
+
+                <p>
+                    Challenged political and educational inequalities
+                    affecting women and argued for women's intellectual,
+                    educational, and civic equality.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Mary%20Wollstonecraft&category=Politics&source=Wollstonecraft"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1818–1883
+                </div>
+
+                <h3>
+                    Karl Marx
+                </h3>
+
+                <div class="thinker-school">
+                    CLASS · ECONOMIC POWER
+                </div>
+
+                <p>
+                    Developed a critique of capitalism centered on
+                    class, labor, ownership, economic organization,
+                    and the relationship between economic and
+                    political power.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Karl%20Marx&category=Politics&source=Marx"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="thinker-card searchable">
+
+                <div class="thinker-period">
+                    1906–1975
+                </div>
+
+                <h3>
+                    Hannah Arendt
+                </h3>
+
+                <div class="thinker-school">
+                    POWER · TOTALITARIANISM
+                </div>
+
+                <p>
+                    Studied totalitarianism, political action, power,
+                    freedom, and the conditions that allow people to
+                    participate in public life.
+                </p>
+
+                <div class="thinker-actions">
+
+                    <a
+                        class="save-note-button"
+                        href="notes.html?title=Hannah%20Arendt&category=Politics&source=Arendt"
+                    >
+                        Save to Notes
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FORMS OF GOVERNMENT
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="government"
+    >
+
+        <div class="section-label">
+            03 — GOVERNMENT
+        </div>
+
+        <h2>
+            Forms of government
+        </h2>
+
+        <p class="section-intro">
+            Government describes the institutions and structures
+            through which political authority is organized and
+            exercised.
+        </p>
+
+
+        <div class="school-grid">
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    PEOPLE
+                </div>
+
+                <h3>
+                    Democracy
+                </h3>
+
+                <p>
+                    Political authority is connected to the people,
+                    usually through voting, representation,
+                    participation, and constitutional rules.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    REPRESENTATION
+                </div>
+
+                <h3>
+                    Republic
+                </h3>
+
+                <p>
+                    A system in which political authority is exercised
+                    through representatives and institutions rather
+                    than hereditary monarchy.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    MONARCH
+                </div>
+
+                <h3>
+                    Monarchy
+                </h3>
+
+                <p>
+                    A system in which a monarch serves as head of
+                    state. Monarchies vary greatly in how much
+                    political power the monarch actually holds.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    SMALL GROUP
+                </div>
+
+                <h3>
+                    Oligarchy
+                </h3>
+
+                <p>
+                    Political power is concentrated among a relatively
+                    small group of people.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    ONE RULER
+                </div>
+
+                <h3>
+                    Autocracy
+                </h3>
+
+                <p>
+                    Political authority is concentrated in the hands
+                    of one ruler or a very small ruling group.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    RELIGIOUS AUTHORITY
+                </div>
+
+                <h3>
+                    Theocracy
+                </h3>
+
+                <p>
+                    Governmental authority is strongly connected to
+                    religious leadership or religious law.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    CENTRALIZED POWER
+                </div>
+
+                <h3>
+                    Authoritarianism
+                </h3>
+
+                <p>
+                    Political power is concentrated and political
+                    participation and opposition are significantly
+                    restricted.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    EXTENSIVE CONTROL
+                </div>
+
+                <h3>
+                    Totalitarianism
+                </h3>
+
+                <p>
+                    A form of political control in which a regime
+                    seeks extensive control over political and
+                    social life.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         IDEOLOGIES
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="ideologies"
+    >
+
+        <div class="section-label">
+            04 — IDEAS
+        </div>
+
+        <h2>
+            Political ideologies
+        </h2>
+
+        <p class="section-intro">
+            Ideologies are systems of political ideas about how
+            society should be organized and how power, rights,
+            property, equality, and government should work.
+        </p>
+
+
+        <div class="school-grid">
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    LIBERTY
+                </div>
+
+                <h3>
+                    Liberalism
+                </h3>
+
+                <p>
+                    Emphasizes individual liberty, rights,
+                    constitutional government, and political equality.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    TRADITION
+                </div>
+
+                <h3>
+                    Conservatism
+                </h3>
+
+                <p>
+                    Generally emphasizes tradition, social continuity,
+                    institutional stability, and cautious approaches
+                    to political change.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    ECONOMIC EQUALITY
+                </div>
+
+                <h3>
+                    Socialism
+                </h3>
+
+                <p>
+                    Encompasses traditions that emphasize social or
+                    collective control over important economic
+                    resources and concerns about economic inequality.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    CLASSLESS SOCIETY
+                </div>
+
+                <h3>
+                    Communism
+                </h3>
+
+                <p>
+                    A political and economic tradition associated
+                    with common ownership and the goal of a classless
+                    society, particularly through Marxist traditions.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    NATION
+                </div>
+
+                <h3>
+                    Nationalism
+                </h3>
+
+                <p>
+                    Emphasizes the political importance of the nation
+                    and often argues that national identity should
+                    have a significant role in political organization.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    ANTI-HIERARCHY
+                </div>
+
+                <h3>
+                    Anarchism
+                </h3>
+
+                <p>
+                    Includes traditions that criticize coercive
+                    hierarchy and centralized state authority while
+                    proposing alternative forms of social organization.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    GENDER &amp; POWER
+                </div>
+
+                <h3>
+                    Feminism
+                </h3>
+
+                <p>
+                    A broad collection of movements and theories
+                    concerned with gender equality, power, rights,
+                    and the social and political position of women.
+                </p>
+
+            </article>
+
+
+            <article class="school-card searchable">
+
+                <div class="school-origin">
+                    ENVIRONMENT
+                </div>
+
+                <h3>
+                    Environmentalism
+                </h3>
+
+                <p>
+                    Political movements and ideas focused on the
+                    relationship between human societies, environmental
+                    systems, and long-term sustainability.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CONCEPTS
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="concepts"
+    >
+
+        <div class="section-label">
+            05 — GLOSSARY
+        </div>
+
+        <h2>
+            Learn the concepts
+        </h2>
+
+        <p class="section-intro">
+            Political research becomes much easier once its
+            recurring vocabulary becomes familiar.
+        </p>
+
+
+        <div class="concept-grid">
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Sovereignty
+                </h3>
+
+                <p>
+                    The supreme authority to govern a political
+                    territory or community.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Legitimacy
+                </h3>
+
+                <p>
+                    The perceived rightfulness or justification
+                    of political authority.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Rule of Law
+                </h3>
+
+                <p>
+                    The principle that laws govern public authority
+                    and that government officials are also subject
+                    to the law.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Separation of Powers
+                </h3>
+
+                <p>
+                    Dividing governmental authority among different
+                    branches or institutions to prevent excessive
+                    concentration of power.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Checks and Balances
+                </h3>
+
+                <p>
+                    Mechanisms that allow different parts of
+                    government to limit or oversee one another.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Federalism
+                </h3>
+
+                <p>
+                    A system in which governmental authority is
+                    constitutionally divided between national and
+                    subnational governments.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Popular Sovereignty
+                </h3>
+
+                <p>
+                    The principle that political authority ultimately
+                    comes from the people.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Social Contract
+                </h3>
+
+                <p>
+                    A family of political theories explaining
+                    political authority through some form of agreement,
+                    consent, or mutual justification among people.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Civil Liberties
+                </h3>
+
+                <p>
+                    Protections against governmental interference
+                    with fundamental freedoms.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Civil Rights
+                </h3>
+
+                <p>
+                    Legal protections intended to secure equal
+                    treatment and prevent discrimination.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Political Participation
+                </h3>
+
+                <p>
+                    The ways people take part in political life,
+                    including voting, organizing, advocacy, and
+                    public discussion.
+                </p>
+
+            </article>
+
+
+            <article class="concept searchable">
+
+                <h3>
+                    Political Power
+                </h3>
+
+                <p>
+                    The ability to influence political decisions,
+                    institutions, behavior, or the distribution
+                    of resources.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DOCUMENTS
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="documents"
+    >
+
+        <div class="section-label">
+            06 — PRIMARY SOURCES
+        </div>
+
+        <h2>
+            Documents worth knowing
+        </h2>
+
+        <p class="section-intro">
+            Political ideas become much more useful when you
+            encounter them in the original documents that shaped
+            political history.
+        </p>
+
+
+        <div class="document-list">
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1215
+                </div>
+
+                <h3>
+                    Magna Carta
+                </h3>
+
+                <p>
+                    An influential medieval charter associated with
+                    limits on royal authority and the development
+                    of constitutional ideas.
+                </p>
+
+            </article>
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1689
+                </div>
+
+                <h3>
+                    English Bill of Rights
+                </h3>
+
+                <p>
+                    Established important limits on the English
+                    monarchy and protections connected to Parliament
+                    and political rights.
+                </p>
+
+            </article>
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1776
+                </div>
+
+                <h3>
+                    Declaration of Independence
+                </h3>
+
+                <p>
+                    Presented an argument for independence based
+                    on natural rights, equality, and government
+                    by consent.
+                </p>
+
+            </article>
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1787
+                </div>
+
+                <h3>
+                    United States Constitution
+                </h3>
+
+                <p>
+                    Established the framework of the United States
+                    federal government and its institutional
+                    structure.
+                </p>
+
+            </article>
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1787–1788
+                </div>
+
+                <h3>
+                    The Federalist Papers
+                </h3>
+
+                <p>
+                    Essays defending and explaining the proposed
+                    United States Constitution, including arguments
+                    about factions, federalism, representation,
+                    and checks and balances.
+                </p>
+
+            </article>
+
+
+            <article class="document searchable">
+
+                <div class="document-date">
+                    1948
+                </div>
+
+                <h3>
+                    Universal Declaration of Human Rights
+                </h3>
+
+                <p>
+                    A foundational international statement describing
+                    fundamental human rights and freedoms.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         QUESTIONS
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="questions"
+    >
+
+        <div class="section-label">
+            07 — INQUIRY
+        </div>
+
+        <h2>
+            Ask a political question
+        </h2>
+
+        <p class="section-intro">
+            Good political research usually begins with a good
+            question. Start with something you genuinely want
+            to understand.
+        </p>
+
+
+        <div class="question-box">
+
+            <textarea
+                id="politicalQuestion"
+                placeholder="Example: Why do governments exist?"
+            ></textarea>
+
+
+            <button
+                onclick="generatePoliticalResearchPlan()"
+            >
+                Build a research plan
+            </button>
+
+
+            <div
+                class="question-result"
+                id="questionResult"
+            >
+
+                <h3>
+                    Your question
+                </h3>
+
+                <p id="questionText"></p>
+
+
+                <div class="research-steps">
+
+                    <strong>
+                        Start here:
+                    </strong>
+
+                    <ol>
+
+                        <li>
+                            Define the important terms in your question.
+                        </li>
+
+                        <li>
+                            Find at least two thinkers or political
+                            traditions that approach the issue differently.
+                        </li>
+
+                        <li>
+                            Identify the strongest argument on each side.
+                        </li>
+
+                        <li>
+                            Look for historical examples that support
+                            or challenge those arguments.
+                        </li>
+
+                        <li>
+                            Write your own provisional conclusion.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <a
+                    class="save-note-button"
+                    id="questionNoteLink"
+                    href="notes.html"
+                >
+                    Save question to Notes
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         NOTES
+         ===================================== -->
+
+    <section
+        class="politics-section"
+        id="notes"
+    >
+
+        <div class="section-label">
+            08 — CONNECTION
+        </div>
+
+        <h2>
+            Politics → Notes
+        </h2>
+
+
+        <div class="notes-connection">
+
+            <h3>
+                Build your own commonplace book.
+            </h3>
+
+            <p>
+                Every political thinker, concept, question,
+                document, and argument you investigate can become
+                part of your personal research archive. Use Notes
+                to collect what you discover and connect politics
+                with philosophy, music, history, and everything else
+                in The Commonplace.
+            </p>
+
+
+            <a
+                class="notes-link"
+                href="notes.html"
+            >
+                Open your Notes
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        A personal library of ideas.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       POLITICS SEARCH
+       ========================================= */
 
     function searchPolitics() {
 
-      const input = document.getElementById("politicsSearch");
-      const message = document.getElementById("searchMessage");
+        const query =
+            document
+                .getElementById("politicsSearch")
+                .value
+                .toLowerCase()
+                .trim();
 
-      const query = input.value.toLowerCase().trim();
 
-      const items = document.querySelectorAll(".searchable");
+        const items =
+            document.querySelectorAll(".searchable");
 
-      let visibleCount = 0;
 
-      items.forEach(function(item) {
+        let visibleCount = 0;
 
-        const text = item.textContent.toLowerCase();
 
-        if (text.includes(query)) {
-          item.style.display = "";
-          visibleCount++;
+        items.forEach(function(item) {
+
+            const text =
+                item.textContent.toLowerCase();
+
+
+            if (
+                query === "" ||
+                text.includes(query)
+            ) {
+
+                item.style.display = "";
+                visibleCount++;
+
+            } else {
+
+                item.style.display = "none";
+
+            }
+
+        });
+
+
+        const message =
+            document.getElementById("searchMessage");
+
+
+        if (query === "") {
+
+            message.textContent = "";
+
+        } else if (visibleCount === 0) {
+
+            message.textContent =
+                "No results found. Try another term.";
+
         } else {
-          item.style.display = "none";
+
+            message.textContent =
+                visibleCount +
+                " result" +
+                (visibleCount === 1 ? "" : "s") +
+                " found.";
+
         }
 
-      });
-
-      if (query === "") {
-        message.textContent = "";
-      } else if (visibleCount === 0) {
-        message.textContent = "No results found. Try another term.";
-      } else {
-        message.textContent =
-          visibleCount + " result" +
-          (visibleCount === 1 ? "" : "s") +
-          " found.";
-      }
     }
 
 
-    /* QUESTION EXPLORER */
+    /* =========================================
+       QUESTION RESEARCH PLAN
+       ========================================= */
 
-    function researchQuestion() {
+    function generatePoliticalResearchPlan() {
 
-      const question =
-        document.getElementById("politicalQuestion").value
-        .toLowerCase()
-        .trim();
-
-      const result =
-        document.getElementById("questionResult");
-
-      if (question === "") {
-
-        result.innerHTML =
-          "<p>Start with a question you're genuinely curious about.</p>";
-
-        return;
-      }
+        const question =
+            document
+                .getElementById("politicalQuestion")
+                .value
+                .trim();
 
 
-      let suggestions = [];
+        if (!question) {
+
+            alert(
+                "Write a political question first."
+            );
+
+            return;
+
+        }
 
 
-      if (
-        question.includes("government") ||
-        question.includes("state") ||
-        question.includes("authority") ||
-        question.includes("power")
-      ) {
-
-        suggestions.push(
-          "<strong>Start here:</strong> Forms of government, political power, sovereignty, legitimacy, and social contract theory."
-        );
-
-      }
+        document
+            .getElementById("questionText")
+            .textContent = question;
 
 
-      if (
-        question.includes("democracy") ||
-        question.includes("vote") ||
-        question.includes("citizen") ||
-        question.includes("people")
-      ) {
-
-        suggestions.push(
-          "<strong>Explore:</strong> Athenian democracy, popular sovereignty, representation, political participation, and republican government."
-        );
-
-      }
+        document
+            .getElementById("questionResult")
+            .classList
+            .add("active");
 
 
-      if (
-        question.includes("right") ||
-        question.includes("freedom") ||
-        question.includes("liberty") ||
-        question.includes("equality")
-      ) {
-
-        suggestions.push(
-          "<strong>Explore:</strong> John Locke, Mary Wollstonecraft, civil liberties, civil rights, natural rights, and liberalism."
-        );
-
-      }
+        const encodedQuestion =
+            encodeURIComponent(question);
 
 
-      if (
-        question.includes("capitalism") ||
-        question.includes("class") ||
-        question.includes("economic") ||
-        question.includes("wealth")
-      ) {
+        document
+            .getElementById("questionNoteLink")
+            .href =
+                "notes.html" +
+                "?title=Political%20Question" +
+                "&category=Politics" +
+                "&source=Politics" +
+                "&summary=" +
+                encodedQuestion +
+                "&content=" +
+                encodedQuestion;
 
-        suggestions.push(
-          "<strong>Explore:</strong> Karl Marx, socialism, capitalism, class, labor, ownership, and economic power."
-        );
-
-      }
-
-
-      if (
-        question.includes("war") ||
-        question.includes("conflict") ||
-        question.includes("revolution")
-      ) {
-
-        suggestions.push(
-          "<strong>Explore:</strong> Political power, revolution, nationalism, state authority, and the relationship between conflict and government."
-        );
-
-      }
-
-
-      if (
-        question.includes("law") ||
-        question.includes("constitution") ||
-        question.includes("court")
-      ) {
-
-        suggestions.push(
-          "<strong>Explore:</strong> Rule of law, constitutionalism, separation of powers, checks and balances, and federalism."
-        );
-
-      }
-
-
-      if (suggestions.length === 0) {
-
-        suggestions.push(
-          "<strong>Good starting points:</strong> Look at the Political Timeline, Thinkers, Forms of Government, and Political Concepts. Your question can become a research trail."
-        );
-
-      }
-
-
-      result.innerHTML =
-        "<h3>Your research trail</h3>" +
-        suggestions.map(function(item) {
-          return "<p>" + item + "</p>";
-        }).join("") +
-        "<p class='question-save'>" +
-        "When you find something useful, save your findings in " +
-        "<a href='notes.html'>Notes</a>." +
-        "</p>";
     }
 
-  </script>
+</script>
+
 
 </body>
 </html>
